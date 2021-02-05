@@ -1,0 +1,46 @@
+.nav {
+    background: #ff7525;
+}
+
+nav {
+    background: #ff7525;
+}
+
+.info .content .socail ul li a {
+    color: #ff7525;
+}
+
+.btn a {
+    background: #ff7525;
+}
+.orders .order-item .img-order {
+    border: 1px solid #ff7525;
+}
+
+.btn-save .save {
+    background: #ff7525;
+}
+
+.forms .item input:focus + label, .forms .item input:valid + label {
+    color: #ff7525;
+}
+
+.requests .requests-item .img-requests {
+    border: 1px solid #ff7525;
+}
+
+.product .btn-add button {
+    background: #ff7525;
+}
+
+.product .info .photo {
+    border: 1px solid #ff7525;
+}
+.product .Weight .calculate input {
+    border: 1px solid #ff7525;
+}
+
+.number-value a {
+    text-decoration: none;
+    color: #ff7525;
+}

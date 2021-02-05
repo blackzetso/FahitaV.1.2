@@ -1,0 +1,95 @@
+.top-bar {
+    background: #E42F2F; 
+}
+
+.button, button, input[type="submit"],
+.block-minicart .shopcart-icon .count, .load-more a:hover,
+.gnash-newsletter.style1 .newsletter-form-wrap .submit-newsletter:hover,
+.customer_login input[type="submit"],
+.sevice-box-content .sevice-button:hover,
+.footer-device-mobile-item.device-cart .count-icon,
+.widget_filter_size li.active,
+.product-item.style-list .single_variation_wrap > .button:hover,
+.shoppingcart-content .control-cart .button:hover,
+.checkout-wrapp .button:hover,
+.checkout-wrapp .group-button-payment .btn-credit-card,
+.payment-method-wrapp .button-control .btn-pay-now,
+.end-checkout .button,
+.btn-zoom.open_qv:hover,
+.attribute_size .list-size a.active,
+.attribute_size .list-size a:hover,
+.tab-details-product .tab-link li a::after,
+.product-item.style2 .group-buttons .button:hover,
+.product-item.style-2 .group-buttons .added_to_cart:hover,
+.kt-popup-newsletter.style-2 .mfp-close,
+.shopcart-description .actions .button-viewcart:hover,
+.kt-popup-quickview .mfp-close,
+.gnash-newsletter.style2 .newsletter-form-wrap .submit-newsletter:hover,
+.product-item.style-6 .loop-form-add-to-cart .button,
+.pinmap-buttom,
+.header-nav-wapper .vertical-wapper, .list-category .category-item:hover {
+    background-color: #e42f2f;
+}
+
+.product-item .thumb-group {
+    background-color: #e42f2f; 
+}
+
+.slick-dots li.slick-active::before {
+    border: 2px solid #e42f2f;
+}
+
+.custommenu-title-blog::before {
+    border-bottom: 4px solid #e42f2f;
+}
+
+.gnash-tabs .tab-link li.active a {
+    background-color: #e42f2f;
+}
+.gnash-iconbox-wrapp.default {
+    background-color: #e42f2f;
+}
+
+.gnash-newsletter.style1 .newsletter-form-wrap .submit-newsletter {
+    background-color: #e42f2f;
+}
+
+.coppyright a {
+    color:  #e42f2f;
+}
+
+a:hover, a:focus, a:active,
+.product-item.style-2 ul li a:hover,
+.quantity .btn-number:hover,
+.header-user-form-tabs .tab-link li.active,
+.review .view:hover,
+.review .s-comments:hover,
+.product-item.style-list .product-info-left .attributes-display li a:hover,
+.cart-form .product-remove:hover a:before,
+.cart-form .shop_table .product-name .attributes-select:hover,
+.cart-form .coupon .button:hover,
+.slick-slider.slider-lookbook.nav-center > .slick-arrow:hover,
+.slider-lookbook-item .view-the-look:hover,
+.list-product-order .attributes-select:hover,
+.header-language .gnash-submenu > li > a:hover,
+.sidebar input[type="checkbox"]:checked + label::before, 
+.main-menu .submenu > li:hover > a,
+.main-menu .submenu > li.active > a,
+.block-minicart .no-product .text span,
+.header-account .login .lost_password,
+.details-thumd .owl-nav div:hover,
+.details-infor .availability a,
+.details-infor .group-button .yith-wcwl-add-to-wishlist div a:hover::before,
+.details-infor .group-button .size-chart-wrapp .btn-size-chart a:hover::before, .tab-details-product .tab-link li.active a, .review_form .comment-form-review .stars a.active, .review_form .comment-form-review .stars a:hover, .related .slick-slider.nav-center > .slick-arrow:hover, .up-sells .slick-slider.nav-center > .slick-arrow:hover,
+.slider-item .button:hover,
+.slick-slider.nav-center > .slick-arrow:hover {
+    color: #e42f2f;
+}
+
+.pagination .page-numbers.current, .pagination .page-numbers:hover {
+    background-color: #e42f2f;
+}
+
+.backtotop:hover {
+    background-color: #e42f2f;
+}
