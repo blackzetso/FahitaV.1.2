@@ -9,6 +9,11 @@
         $stmt->execute([$_SESSION['id']]);  
         $items = $stmt->fetchAll();
         $CartCount = $stmt->rowCount();
+        
+        $stmt = $con->prepare('SELECT SUM(total) FROM cart WHERE user = ? ORDER BY id DESC');
+        $stmt->execute([$_SESSION['id']]);
+        $info = $stmt->fetch();
+        $total = $info['SUM(total)'];
     }
 ?>
 <header class="header style7">
@@ -127,7 +132,7 @@
                                         <span class="total-title"><?php echo translate('20'); ?>: </span>
                                         <span class="total-price">
 													<span class="Price-amount">
-														$135
+														$<?php echo $total; ?>
 													</span>
 												</span>
                                     </div>

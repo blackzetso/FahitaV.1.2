@@ -116,19 +116,19 @@
                                             <div class="quantity">
                                                 <div class="control">
                                                     <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                    <input type="text" data-step="1" data-min="0" value="1" title="Qty"
+                                                    <input type="text" data-step="1" data-min="0" value="<?php echo $item['qty']; ?>" title="Qty"
                                                            class="input-qty qty" size="4">
                                                     <a href="#" class="btn-number qtyplus quantity-plus">+</a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="product-price" data-title="Price">
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">
-															$
-														</span>
-														45
-													</span>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">
+                                                    $
+                                                </span>
+                                                <?php echo $item['total']; ?>
+                                            </span>
                                         </td>
                                     </tr>
                                     <?php } ?>   
@@ -141,12 +141,12 @@
                                                 <a href="#" class="button"></a>
                                             </div> -->
                                             <div class="order-total">
-														<span class="title">
-															<?php echo translate('20'); ?>:
-														</span>
+                                                <span class="title">
+                                                    <?php echo translate('20'); ?>:
+                                                </span>
                                                 <span class="total-price">
-															$95
-														</span>
+                                                    $<?php echo $total; ?>
+                                                </span>
                                             </div>
                                         </td>
                                     </tr>
