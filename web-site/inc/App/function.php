@@ -132,3 +132,23 @@
     }
 
  
+    function previousPage($page){ 
+        if(($page - 1) > 0 ){ 
+            $result = $page - 1; 
+        }else{ 
+            $result = '1'; 
+        } 
+        
+        return $result;
+    }
+
+    function nextPage($page,$totalPage) {
+        if(($page + 1) < $totalPage){ 
+            $result = $page + 1;
+        }elseif(($page + 1) >= $totalPage){ 
+            $result = $totalPage;
+        } 
+        return $result;
+    }
+
+ 
