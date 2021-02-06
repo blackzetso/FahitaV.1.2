@@ -94,14 +94,14 @@
                                         <th class="product-subtotal"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="items">
                                     <?php foreach($items as $item){ 
                                         $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
                                         $stmt->execute([$item['product']]);
                                         $product = $stmt->fetch(); ?>
                                     <tr class="cart_item">
                                         <td class="product-remove">
-                                            <a href="#" class="remove"></a>
+                                            <a href="javascript:void(0)" onclick="getinfo('inc/cart/delete.php?id=<?php echo $item['id']; ?>','#items')" class="remove"></a>
                                         </td>
                                         <td class="product-thumbnail">
                                             <a href="#">
@@ -190,6 +190,18 @@
 <script src="assets/js/lightbox.min.js"></script>
 <script src="assets/js/owl.thumbs.min.js"></script>
 <script src="assets/js/jquery.scrollbar.min.js"></script>
- <script src="assets/js/frontend-plugin.js"></script>
+<script src="assets/js/frontend-plugin.js"></script>
+<script>
+    window.onload = function(){
+
+          window.getinfo = function(urlx,id){
+                $.get(urlx).done(function(data){
+
+                    $(id).html(data);
+                    $(hide).hide();
+                });  
+          }
+        }; 
+</script>
 </body>
 </html>
