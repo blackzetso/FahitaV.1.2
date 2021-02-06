@@ -54,6 +54,41 @@
         return $row[$select];
     }
 
+    function getCategoryName($id) {
+        
+        global $con;
+        
+        $stmt = $con->prepare("SELECT * FROM `categories` WHERE id = '$id' ");
+        $stmt->execute();
+        $row = $stmt->fetch();
+        
+        return $row['name'];
+    }
+
+    function getLanguageName($id) {
+        
+        global $con;
+        
+        $stmt = $con->prepare("SELECT * FROM `language` WHERE id = '$id' ");
+        $stmt->execute();
+        $row = $stmt->fetch();
+        
+        return $row['name'];
+    }
+
+    
+
+    function getSubCategoryName($id) {
+        
+        global $con;
+        
+        $stmt = $con->prepare("SELECT * FROM `subcategories` WHERE id = '$id' ");
+        $stmt->execute();
+        $row = $stmt->fetch();
+        
+        return $row['name'];
+    }
+
     // Error Message Function
     function errorMessage($content){
         $msg = '<div class="alert alert-danger text-center" >'.$content.'</div>';
