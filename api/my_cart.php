@@ -42,24 +42,23 @@ if($jwt){
        // $response['message']='access granted';
       
        $id=$decoded->data->id;
-        $stmt = $con->prepare("SELECT * FROM orders WHERE user = '$id' ");
+        $stmt = $con->prepare("SELECT * FROM cart WHERE user = '$id' ");
         $stmt->execute();
         if($stmt->rowCount()==0){
-            $response['message']='لا يوجد  طلبات لك';
+            $response['message']='لا يوجد سلة تسوق لك قم باضافة عناصر وأنشىء السلة';
         }
         else {
             $rows = $stmt->fetchAll();
             foreach($rows as $k=>$v){
                 $response[$k]['id']=$v['id'];
-                $response[$k]['city']=$v['city'];
-                $response[$k]['zone']=$v['zone'];
-                $response[$k]['street']=$v['street'];
-                $response[$k]['build']=$v['build'];
-                $response[$k]['storey']=$v['storey'];
-                $response[$k]['time_from']=$v['time_from'];
-                $response[$k]['time_to']=$v['time_to'];
-                $response[$k]['order_status']=$v['order_status'];
-                $response[$k]['date']=$v['date'];
+                $response[$k]['product_id']=$v['product'];
+                $response[$k]['product_name']=$v['name'];
+                
+                $response[$k]['unit']=$v['unit'];
+                $response[$k]['price']=$v['price'];
+                $response[$k]['qty']=$v['qty'];
+                $response[$k]['total']=$v['total'];
+              
             }   
         }
 
