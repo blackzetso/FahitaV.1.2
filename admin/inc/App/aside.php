@@ -34,8 +34,14 @@
 							<a class="side-menu__item" href="combined-invoice.php"><i class="side-menu__icon ti-pencil-alt"></i><span class="side-menu__label">فاتورة مجمعه</span></a>
 						</li>
                         <li class="slide">
-							<a class="side-menu__item" href="slides.php"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label"> البنرات  </span> </a>
-						</li>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label"> البنرات  </span> <i class="angle fa fa-angle-right"></i></a>
+						    <ul class="slide-menu">
+								<li><a href="slides.php" class="slide-item"> بنرات متحركه </a></li>
+								<li><a href="pending.php" class="slide-item"> بنرات علوية</a></li>
+								<li><a href="done.php" class="slide-item"> بنرات سفلية </a></li>  
+							</ul>
+                        </li>
+                         
                         <li class="slide">
 							<a class="side-menu__item" href="settings.php"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label"> الإعدادات  </span> </a>
 						</li>
