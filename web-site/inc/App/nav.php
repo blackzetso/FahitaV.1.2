@@ -96,11 +96,14 @@
 										<?php if(isset($_SESSION['id'])){ echo $CartCount; }else { echo '0'; } ?>
 								</span>
                             </a>
+                            <?php if(isset($_SESSION['id'])){ ?>
                             <div class="shopcart-description gnash-submenu">
                                 <div class="content-wrap">
                                     <h3 class="title"><?php echo translate('21') ?></h3>
                                     <ul class="minicart-items">
-                                        <?php foreach($items as $item){
+                                        <?php 
+                                            
+                                            foreach($items as $item){
                                             $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
                                             $stmt->execute([$item['product']]);
                                             $product = $stmt->fetch();
@@ -146,6 +149,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                         <div class="block-account block-header gnash-dropdown">
                             <a href="javascript:void(0);" data-gnash="gnash-dropdown">
