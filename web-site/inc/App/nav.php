@@ -100,9 +100,9 @@
                             <div class="shopcart-description gnash-submenu">
                                 <div class="content-wrap">
                                     <h3 class="title"><?php echo translate('21') ?></h3>
+                                    <?php if($CartCount > 0){ ?>
                                     <ul class="minicart-items">
-                                        <?php 
-                                            
+                                        <?php  
                                             foreach($items as $item){
                                             $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
                                             $stmt->execute([$item['product']]);
@@ -147,6 +147,9 @@
                                             <span><?php echo translate('56') ?></span>
                                         </a>
                                     </div>
+                                    <?php } else { ?> 
+                                    <div class="alert alert-warning text-center">Cart empty!</div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <?php } ?>

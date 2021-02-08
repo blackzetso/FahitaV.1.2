@@ -140,7 +140,7 @@
 										<?php echo discount($row['price'],$row['discount']); ?>
 									</div>
 									<div class="product-thumb">
-										<div class="thumb-inner">
+										<div class="thumb-inner"> 
 											<a href="productdetails.php?id=<?php echo $row['id']; ?>">
 												<img style="height: 269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
 											</a>

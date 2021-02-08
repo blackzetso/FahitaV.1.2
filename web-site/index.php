@@ -123,7 +123,7 @@
                             </div>
                             <div class="product-thumb">
                                 <div class="thumb-inner">
-                                    <a href="#">
+                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>">
                                         <img style="height: 269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
                                     </a>
                                     <div class="thumb-group">
@@ -135,10 +135,10 @@
                                     </div>
                                 </div>
                                  
-                            </div>
+                            </div> 
                             <div class="product-info">
                                 <h5 class="product-name product_title">
-                                    <a href="#"><?php echo $row['name']; ?></a>
+                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                                 </h5>
                                 <div class="group-info">
                                     
@@ -232,7 +232,7 @@
                                         </div>
                                         <div class="product-thumb">
                                             <div class="thumb-inner">
-                                                <a href="#">
+                                                <a href="productdetails.php?id=<?php echo $row['id']; ?>">
                                                     <img style="height:269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
                                                 </a>
                                                 <div class="thumb-group">
@@ -245,7 +245,7 @@
                                         </div>
                                         <div class="product-info">
                                             <h5 class="product-name product_title">
-                                                <a href="#"><?php echo $row['name']; ?></a>
+                                                <a href="productdetails.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                                             </h5>
                                             <div class="group-info">
                                                
@@ -282,21 +282,20 @@
                                             </div>
                                             <div class="product-thumb">
                                                 <div class="thumb-inner">
-                                                    <a href="#">
+                                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>">
                                                         <img style="height:269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
                                                     </a>
                                                     <div class="thumb-group">
                                                         <a href="#" class="button quick-wiew-button">Quick View</a>
                                                         <div class="loop-form-add-to-cart">
-                                                            <button class="single_add_to_cart_button button">Add to cart
-                                                            </button>
+                                                            <a href="javascript:void(0)" onclick="getinfo('inc/cart/insert.php?id=<?php echo $row['id']; ?>','#CartCount')" class="single_add_to_cart_button button">Add to cart </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="product-info">
                                                 <h5 class="product-name product_title">
-                                                    <a href="#"><?php echo $row['name']; ?></a>
+                                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                                                 </h5>
                                                 <div class="group-info">
 
@@ -332,21 +331,20 @@
                                             </div>
                                             <div class="product-thumb">
                                                 <div class="thumb-inner">
-                                                    <a href="#">
+                                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>">
                                                         <img style="height:269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
                                                     </a>
                                                     <div class="thumb-group">
                                                         <a href="#" class="button quick-wiew-button">Quick View</a>
                                                         <div class="loop-form-add-to-cart">
-                                                            <button class="single_add_to_cart_button button">Add to cart
-                                                            </button>
+                                                            <a href="javascript:void(0)" onclick="getinfo('inc/cart/insert.php?id=<?php echo $row['id']; ?>','#CartCount')" class="single_add_to_cart_button button">Add to cart </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="product-info">
                                                 <h5 class="product-name product_title">
-                                                    <a href="#"><?php echo $row['name']; ?></a>
+                                                    <a href="productdetails.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                                                 </h5>
                                                 <div class="group-info">
 
@@ -433,6 +431,18 @@
     <i class="fa fa-angle-double-up"></i>
 </a>
 <script src="assets/js/jquery-1.12.4.min.js"></script>
+<script>
+     window.onload = function(){
+
+          window.getinfo = function(urlx,id){
+                $.get(urlx).done(function(data){
+
+                    $(id).html(data);
+                    $(hide).hide();
+                });  
+          }
+        };
+</script>
 <script src="assets/js/jquery.plugin-countdown.min.js"></script>
 <script src="assets/js/jquery-countdown.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -450,20 +460,10 @@
 <script src="assets/js/lightbox.min.js"></script>
 <script src="assets/js/owl.thumbs.min.js"></script>
 <script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
 <script src="assets/js/frontend-plugin.js"></script>
 <script src="assets/js/toastr.js" ></script>
-<script>
-        window.onload = function(){
-
-          window.getinfo = function(urlx,id){
-                $.get(urlx).done(function(data){
-
-                    $(id).html(data);
-                    $(hide).hide();
-                });  
-          }
-        };
+<script> 
+       
     /*
         $(document).on('click','.lang',function(event){
                 event.preventDefault(); 

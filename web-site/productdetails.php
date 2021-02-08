@@ -83,7 +83,7 @@
                     <div class="details-product">
                         <div class="details-thumd">
                             <div class="image-preview-container image-thick-box image_preview_container">
-                                <img id="img_zoom" data-zoom-image="assets/images/details-item-1.jpg"
+                                <img id="img_zoom" data-zoom-image="../img/products/<?php echo $row['img']; ?>"
                                      src="../img/products/<?php echo $row['img']; ?>" alt="img">
                                 <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
                             </div>
