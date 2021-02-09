@@ -49,68 +49,60 @@ if($jwt){
         // show user details
        // $response['message']='access granted';
       
+       
        $id=$decoded->data->id;
-       $product = $_POST['product_id'];
-    $name  = $_POST['product_name'];
-    $price = $_POST['price'];
-    $unit  = $_POST['unit'];  
-      
-    $qty   = $_POST['qty'];
-    if(isset($price)&&isset($qty)){
-        $total = $price * $qty;
-    }
+
+       if ($_SERVER['REQUEST_METHOD']=='POST') {
+        if(isset($_POST['name'])){
+            $fname  = filter_var($_POST['name'],FILTER_SANITIZE_STRING);
+        }
+        if(isset($_POST['email'])){
+            $email  = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
+        }
+        //$lname  = filter_var($_POST['lname'],FILTER_SANITIZE_STRING);
+        if(isset($_POST['password'])){
+            $password   = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+            $hashed = md5($_POST['password']);
+        }
     
+       if(isset($_POST['phone'])){
+        $phone  = filter_var($_POST['phone'],FILTER_SANITIZE_STRING); 
+        }
 
-    $Errors=array();
+        $Errors=array();
         
-        if(!isset($product)){
-            $Errors[] = 'أدخل رقم المنتج';
+        if(!isset($fname)){
+            $Errors[] = 'name input is required';
         } 
-        if(!isset($name)){
-            $Errors[] = 'أدخل اسم المنتج';
+        if(!isset($email)){
+            $Errors[] = 'email input is required';
         }
-        if(!isset($price)){
-            $Errors[] = 'أدخل سعر المنتج';
-        }
-        if(!isset($unit)){
-            $Errors[] = 'أدخل وحدة المنتج';
+        
+        if(!isset($phone)){
+            $Errors[] = 'phone number input is required';
         } 
-
-        if(!isset($qty)){
-            $Errors[] = 'أدخل كمية المنتج';
+        
+        if(isset($password) && mb_strlen($password) < 6){
+            $Errors[] = 'password must be more than 5 characters';
         } 
-
         if(empty($Errors)){ 
-            $stmt = $con->prepare("SELECT * FROM cart WHERE user = ? AND product = ?");
-            $stmt->execute([$id,$product]); 
-            $Count = $stmt->rowCount();
-            
-            if($Count > 0){
-                $row = $stmt->fetch(); 
-               
-                $qty+=$row['qty'];
-                $total=$qty*$price;
-                $stmt = $con->prepare("UPDATE cart SET unit = ? , price = ? , qty = ? , total = ? WHERE user = ? AND product = ? ");
-                $stmt->execute([$unit,$price,$qty,$total,$id,$product]);
-                $response['message']='تم  تعديل كمية هذا العنصر بالسلة';
-            }else{
-                $stmt = $con->prepare("INSERT INTO `cart` ( `product`,`name`,`unit`, `price`, `qty`, `total`, `user`) VALUES (?,?,?,?,?,?,?)");
-                $stmt->execute([$product,$name,$unit,$price,$qty,$total,$id]); 
-                $response['message']='تم اضافة عناصر جديدة الى السلة';
-            } 
-            
-                
-            $stmt = $con->prepare("SELECT id FROM cart WHERE user = ?");
-            $stmt->execute([$id]); 
-            $newCount = $stmt->rowCount();
-            $response['cart_items_no']=$newCount;
+            $stmt = $con->prepare("select * from users  WHERE id = $id");
+            $stmt->execute();
+            $row=$stmt->fetch();
+            $new_pass=isset($_POST['password'])?$hashed:$row['password'];
+            $stmt = $con->prepare("UPDATE users SET full_name = ? , email = ? , phone_number = ?  WHERE id = ?");
+            $stmt->execute([$fname,$email,$phone,$id]);
+            if($stmt){
+              $response['message']="تم تحديث بياناتك بنجاح";
+            }
         }
         else {
             foreach($Errors as $error){
                 $response['errors'][]=$error;
             }
         }
-
+       }
+       
    
 
 

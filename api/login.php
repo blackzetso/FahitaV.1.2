@@ -34,7 +34,7 @@
                 $response[]='ايميل غير مسجل من قبل';
             }
             else {
-                $stmt = $con->prepare("SELECT id,email,password,full_name FROM `users` WHERE email = ? AND password = ? ");
+                $stmt = $con->prepare("SELECT * FROM `users` WHERE email = ? AND password = ? ");
                 $stmt->execute([$email,$hashed]);
                 $row = $stmt->fetch(); 
                 
@@ -52,7 +52,8 @@
                         "data" => array(
                             "id" => $row['id'],
                             "name" => $row['full_name'],
-                            "email" => $row['email']
+                            "email" => $row['email'],
+                            'phone'=>$row['phone_number']
                         )
                      );
                   
