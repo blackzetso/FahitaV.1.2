@@ -19,12 +19,12 @@
 
     $from = ($page-1)*$num_ber_page;  
 
-    $stmt = $con->prepare("SELECT * FROM products WHERE category = ? LIMIT $from,$num_ber_page");
+    $stmt = $con->prepare("SELECT * FROM products WHERE subcategory = ? LIMIT $from,$num_ber_page");
     $stmt->execute([$id]);
     $rows = $stmt->fetchAll();
     $Count = $stmt->rowCount();
 
-    $stmt = $con->prepare("SELECT * FROM categories WHERE id = ? ");
+    $stmt = $con->prepare("SELECT * FROM subcategories WHERE id = ? ");
     $stmt->execute([$id]);
     $cat = $stmt->fetch(); 
 ?>
@@ -140,7 +140,7 @@
 										<?php echo discount($row['price'],$row['discount']); ?>
 									</div>
 									<div class="product-thumb">
-										<div class="thumb-inner"> 
+										<div class="thumb-inner">
 											<a href="productdetails.php?id=<?php echo $row['id']; ?>">
 												<img style="height: 269px;" src="../img/products/<?php echo $row['img']; ?>" alt="img">
 											</a>
@@ -184,11 +184,11 @@
                         
 						<div class="pagination clearfix style2">
 							<div class="nav-link">
-								<a href="category.php?id=<?php echo $id; ?>&page=<?php echo previousPage($page); ?>" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+								<a href="subcategory.php?id=<?php echo $id; ?>&page=<?php echo previousPage($page); ?>" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
 								<?php   for($i=1;$i<=$totalPage;$i++){ ?>
-								<a href="category.php?id=<?php echo $id; ?>&page=<?php echo $i ?>" class="page-numbers <?php if($_GET['page'] == $i){ echo 'current'; } ?>"><?php echo  $i ?></a>
+								<a href="subcategory.php?id=<?php echo $id; ?>&page=<?php echo $i ?>" class="page-numbers <?php if($_GET['page'] == $i){ echo 'current'; } ?>"><?php echo  $i ?></a>
                                 <?php } ?> 
-								<a href="category.php?id=<?php echo $id; ?>&page=<?php echo nextPage($page,$totalPage); ?>" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
+								<a href="subcategory.php?id=<?php echo $id; ?>&page=<?php echo nextPage($page,$totalPage); ?>" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
 							</div>
 						</div>
 					</div>

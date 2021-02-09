@@ -3,7 +3,7 @@
       if(isset($_COOKIE['langauge'])) {
           $code  = $_COOKIE['langauge'];
       }else {
-          $code = 'ar';
+          $code = 'en';
       } 
     function translate($id){
        global $con;

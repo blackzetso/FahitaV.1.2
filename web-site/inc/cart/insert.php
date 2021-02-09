@@ -45,6 +45,9 @@
     $newCount = $stmt->rowCount();
 
     echo $newCount; }else{
-        echo 0;
-    }  
+        echo 0; ?>
+        <script>
+            location.href="login.php";
+        </script>
+   <?php }  
     

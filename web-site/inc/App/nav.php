@@ -2,6 +2,19 @@
     $stmt = $con->prepare("SELECT * FROM language");
     $stmt->execute();
     $langs = $stmt->fetchAll();
+
+
+    if(isset($_SESSION['id'])){
+        $stmt = $con->prepare("SELECT * FROM cart WHERE user = ?");
+        $stmt->execute([$_SESSION['id']]);  
+        $items = $stmt->fetchAll();
+        $CartCount = $stmt->rowCount();
+        
+        $stmt = $con->prepare('SELECT SUM(total) FROM cart WHERE user = ? ORDER BY id DESC');
+        $stmt->execute([$_SESSION['id']]);
+        $info = $stmt->fetch();
+        $total = $info['SUM(total)'];
+    }
 ?>
 <header class="header style7">
     <div class="top-bar">
@@ -80,33 +93,32 @@
                             <a href="javascript:void(0);" class="shopcart-icon" data-gnash="gnash-dropdown">
                                 Cart
                                 <span id="CartCount" class="count">
-										0
+										<?php if(isset($_SESSION['id'])){ echo $CartCount; }else { echo '0'; } ?>
 								</span>
                             </a>
+                            <?php if(isset($_SESSION['id'])){ ?>
                             <div class="shopcart-description gnash-submenu">
                                 <div class="content-wrap">
-                                    <h3 class="title">Shopping Cart</h3>
+                                    <h3 class="title"><?php echo translate('21') ?></h3>
+                                    <?php if($CartCount > 0){ ?>
                                     <ul class="minicart-items">
+                                        <?php  
+                                            foreach($items as $item){
+                                            $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
+                                            $stmt->execute([$item['product']]);
+                                            $product = $stmt->fetch();
+                                        ?>
                                         <li class="product-cart mini_cart_item">
                                             <a href="#" class="product-media">
-                                                <img src="assets/images/item-minicart-1.jpg" alt="img">
+                                                <img src="../img/products/<?php echo $product['img'] ?>" alt="img">
                                             </a>
                                             <div class="product-details">
                                                 <h5 class="product-name">
-                                                    <a href="#">Sweet Orange</a>
-                                                </h5>
-                                                <div class="variations">
-															<span class="attribute_color">
-																<a href="#">Black</a>
-															</span>
-                                                    ,
-                                                    <span class="attribute_size">
-																<a href="#">300ml</a>
-															</span>
-                                                </div>
+                                                    <a href="productdetails.php?id=<?php echo $item['product']; ?>"><?php echo $product['name']; ?></a>
+                                                </h5> 
                                                 <span class="product-price">
 															<span class="price">
-																<span>$45</span>
+																<span>$<?php echo $item['price'] ?></span>
 															</span>
 														</span>
                                                 <span class="product-quantity">
@@ -116,86 +128,31 @@
                                                     <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li class="product-cart mini_cart_item">
-                                            <a href="#" class="product-media">
-                                                <img src="assets/images/item-minicart-2.jpg" alt="img">
-                                            </a>
-                                            <div class="product-details">
-                                                <h5 class="product-name">
-                                                    <a href="#">Soap Soybeans Solutions</a>
-                                                </h5>
-                                                <div class="variations">
-															<span class="attribute_color">
-																<a href="#">Black</a>
-															</span>
-                                                    ,
-                                                    <span class="attribute_size">
-																<a href="#">300ml</a>
-															</span>
-                                                </div>
-                                                <span class="product-price">
-															<span class="price">
-																<span>$45</span>
-															</span>
-														</span>
-                                                <span class="product-quantity">
-															(x1)
-														</span>
-                                                <div class="product-remove">
-                                                    <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="product-cart mini_cart_item">
-                                            <a href="#" class="product-media">
-                                                <img src="assets/images/item-minicart-3.jpg" alt="img">
-                                            </a>
-                                            <div class="product-details">
-                                                <h5 class="product-name">
-                                                    <a href="#">Soybeans Solutions Soap</a>
-                                                </h5>
-                                                <div class="variations">
-															<span class="attribute_color">
-																<a href="#">Black</a>
-															</span>
-                                                    ,
-                                                    <span class="attribute_size">
-																<a href="#">300ml</a>
-															</span>
-                                                </div>
-                                                <span class="product-price">
-															<span class="price">
-																<span>$45</span>
-															</span>
-														</span>
-                                                <span class="product-quantity">
-															(x1)
-														</span>
-                                                <div class="product-remove">
-                                                    <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        </li> 
+                                        <?php } ?>
                                     </ul>
                                     <div class="subtotal">
-                                        <span class="total-title">Subtotal: </span>
+                                        <span class="total-title"><?php echo translate('20'); ?>: </span>
                                         <span class="total-price">
 													<span class="Price-amount">
-														$135
+														$<?php echo $total; ?>
 													</span>
 												</span>
                                     </div>
                                     <div class="actions">
-                                        <a class="button button-viewcart" href="shoppingcart.html">
-                                            <span>View Bag</span>
+                                        <a class="button button-viewcart" href="cart.php">
+                                            <span><?php echo translate('58') ?></span>
                                         </a>
                                         <a href="checkout.html" class="button button-checkout">
-                                            <span>Checkout</span>
+                                            <span><?php echo translate('56') ?></span>
                                         </a>
                                     </div>
+                                    <?php } else { ?> 
+                                    <div class="alert alert-warning text-center">Cart empty!</div>
+                                    <?php } ?>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                         <div class="block-account block-header gnash-dropdown">
                             <a href="javascript:void(0);" data-gnash="gnash-dropdown">

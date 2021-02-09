@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 04 فبراير 2021 الساعة 16:20
--- إصدار الخادم: 10.3.27-MariaDB-log-cll-lve
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: 07 فبراير 2021 الساعة 01:16
+-- إصدار الخادم: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `semiggiy_Rahawan`
+-- Database: `shop`
 --
 
 -- --------------------------------------------------------
@@ -83,7 +83,19 @@ INSERT INTO `attributes` (`id`, `key_name`) VALUES
 (44, 'New Arrivals'),
 (45, 'Featured'),
 (46, 'Deal of the day\r\n'),
-(47, 'search here');
+(47, 'search here'),
+(48, 'contact:SEND US A MESSAGE!'),
+(49, 'contact:Your Name'),
+(50, 'contact:Your Email'),
+(51, 'contact:Phone'),
+(52, 'contact:Company'),
+(53, 'contact:Your Message'),
+(54, 'contact:CONTACT INFORMATION'),
+(55, 'contact:send message'),
+(56, 'Checkout'),
+(57, 'Continue Shopping'),
+(58, 'view cart'),
+(59, 'Subtotal');
 
 -- --------------------------------------------------------
 
@@ -107,8 +119,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product`, `name`, `unit`, `price`, `qty`, `total`, `user`) VALUES
-(185, 548, 'WINDA كاوتش 155/70 R13 - WP15 - | صيني', 'unite1', '442', '2', '884', 1),
-(187, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 'unite1', '23', '5', '115', 18);
+(187, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 'unite1', '23', '5', '115', 18),
+(190, 550, 'BST وش فانوس شبورة شمال - مرسيدس C Class [ 2001 - 2007 ] | ص', NULL, '60', '3', '60', 1),
+(193, 551, 'باغة خلفي - سوزوكي ماروتي [ 2000 - 2014 ] | هند', NULL, '60', '1', '60', 1),
+(194, 552, 'TEPO فانوس خلفي داخلي - هيونداي النترا HD [ 2007 - 2011 ] | ', NULL, '195', '1', '195', 1);
 
 -- --------------------------------------------------------
 
@@ -135,6 +149,27 @@ INSERT INTO `categories` (`id`, `name`, `img`, `order_number`) VALUES
 (25, 'فوانيس و كشافات', '9220909.png', 0),
 (26, 'زيوت', '2658472.jpg', 0),
 (27, 'هيونداى', '1401976.png', 0);
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL,
+  `map` text NOT NULL,
+  `adress` text NOT NULL,
+  `phone` varchar(60) NOT NULL,
+  `email` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `map`, `adress`, `phone`, `email`) VALUES
+(1, ' <iframe width=\"100%\" height=\"500\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"></iframe>', 'Restfield White City London G12 Ariel Way - United Kingdom', '(+800) 123 456 7890', 'Info@Gnashoutfit.Co.Uk');
 
 -- --------------------------------------------------------
 
@@ -357,6 +392,28 @@ INSERT INTO `subcategories` (`id`, `name`, `category`, `img`, `category_order`) 
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `team`
+--
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL,
+  `img` varchar(60) NOT NULL,
+  `name` varchar(70) NOT NULL,
+  `job_title` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `team`
+--
+
+INSERT INTO `team` (`id`, `img`, `name`, `job_title`) VALUES
+(1, 'member2.png', 'Mr Claudio', 'CEO & Founder gnash Outfit'),
+(2, 'member1.png', 'Mr Claudio', 'CEO & Founder gnash Outfit'),
+(3, 'member3.png', 'Mr Claudio', 'CEO & Founder gnash Outfit');
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `top_ads`
 --
 
@@ -487,7 +544,29 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (91, 46, 'deal of the day', 2),
 (92, 46, 'صفقة اليوم', 1),
 (93, 47, 'search here', 2),
-(94, 47, 'ابحث هنا', 1);
+(94, 47, 'ابحث هنا', 1),
+(95, 48, 'SEND US A MESSAGE!', 2),
+(96, 48, 'أرسل لنا رسالة!', 1),
+(97, 49, 'Your Name', 2),
+(98, 49, 'اسمك', 1),
+(99, 50, 'Your Email', 2),
+(100, 50, 'ايميلك', 1),
+(101, 51, 'phone', 2),
+(102, 51, 'الهاتف', 1),
+(103, 52, 'conpany', 2),
+(104, 52, 'الشركه', 1),
+(105, 53, 'Your Message', 2),
+(106, 53, 'رسالتك', 1),
+(107, 54, 'Contact Information', 2),
+(108, 54, 'معلومات الاتصال', 1),
+(109, 55, 'send message', 2),
+(110, 55, 'ارسال رسالة', 1),
+(111, 56, 'Checkout', 2),
+(112, 56, 'الدفع', 1),
+(113, 57, 'Continue Shopping', 2),
+(114, 57, 'مواصلة التسوق', 1),
+(115, 58, 'View cart', 2),
+(116, 58, 'عرض السلة', 1);
 
 -- --------------------------------------------------------
 
@@ -578,6 +657,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `language`
 --
 ALTER TABLE `language`
@@ -624,6 +709,12 @@ ALTER TABLE `subcategories`
   ADD KEY `category_subcategory` (`category`);
 
 --
+-- Indexes for table `team`
+--
+ALTER TABLE `team`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `top_ads`
 --
 ALTER TABLE `top_ads`
@@ -665,19 +756,25 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT for table `attributes`
 --
 ALTER TABLE `attributes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -722,6 +819,12 @@ ALTER TABLE `subcategories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
+-- AUTO_INCREMENT for table `team`
+--
+ALTER TABLE `team`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `top_ads`
 --
 ALTER TABLE `top_ads`
@@ -731,7 +834,7 @@ ALTER TABLE `top_ads`
 -- AUTO_INCREMENT for table `translation`
 --
 ALTER TABLE `translation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `unit`
