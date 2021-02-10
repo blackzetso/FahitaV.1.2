@@ -64,19 +64,8 @@
                 </div>
                 <div class="col-lg-7 col-sm-8 col-md-6 col-xs-5 col-ts-12">
                     <div class="block-search-block">
-                        <form class="form-search form-search-width-category">
-                            <div class="form-content">
-                                <div class="category">
-                                    <select title="cate" data-placeholder="All Categories" class="chosen-select"
-                                            tabindex="1">
-                                        <option value="United States">Healthy</option>
-                                        <option value="United Kingdom">Pumpkin</option>
-                                        <option value="Afghanistan">Vitamins</option>
-                                        <option value="Aland Islands">Vegetables</option>
-                                        <option value="Albania">New Arrivals</option>
-                                        <option value="Algeria">Lentils</option>
-                                    </select>
-                                </div>
+                        <form action="search.php" class="form-search form-search-width-category">
+                            <div class="form-content"> 
                                 <div class="inner">
                                     <input type="text" class="input" name="s" value="" placeholder="Search here">
                                 </div>
@@ -143,7 +132,7 @@
                                         <a class="button button-viewcart" href="cart.php">
                                             <span><?php echo translate('58') ?></span>
                                         </a>
-                                        <a href="checkout.html" class="button button-checkout">
+                                        <a href="checkout.php" class="button button-checkout">
                                             <span><?php echo translate('56') ?></span>
                                         </a>
                                     </div>

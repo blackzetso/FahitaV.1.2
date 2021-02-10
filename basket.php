@@ -45,26 +45,26 @@
         if($Count > 0){ ?> 
     <section class="orders" id="ajax">
         <?php foreach($rows as $row){
-            if($row['unit'] == "unite1"){
-                $price = "price";
-            }else{
-                $price = 'price2';
-            }
-            if($row['unit'] == "unite1"){
-                $unite = "unite";
-            }else{
-                $unite = 'unite2';
-            } ?>
+           // if($row['unit'] == "unite1"){
+           //     $price = "price";
+           // }else{
+           //     $price = 'price2';
+           // }
+           // if($row['unit'] == "unite1"){
+            //    $unite = "unite";
+            //}else{
+            //    $unite = 'unite2';
+            //} ?>
         <div class="order-item" >
             <div class="img-order">
                 <img src="img/products/<?php echo getColumn('img','products','id',$row['product']); ?>" alt="">
             </div>
             <div class="info-order">
                 <div class="name title"><?php echo getColumn('name','products','id',$row['product']); ?></div>
-                <div class="salary-order prag"><span class="salary"><?php echo getColumn($price,'products','id',$row['product'])-getColumn('discount','products','id',$row['product']); ?></span> <span>ج</span></div>
+                <div class="salary-order prag"><span class="salary"><?php echo getColumn('price','products','id',$row['product'])-getColumn('discount','products','id',$row['product']); ?></span> <span>ج</span></div>
             </div>
             <div class="info-order">
-                <div class="name title"> <?php echo getColumn($unite,'products','id',$row['product']); ?> </div>
+                <div class="name title"> <?php echo getColumn('unite','products','id',$row['product']); ?> </div>
                 <div class="salary-order prag"><span class="salary"><?php echo $row['qty']; ?></span>  </div>
             </div>
             <div class="info-order">
@@ -72,7 +72,7 @@
                 <div class="salary-order prag"><span class="salary"><?php echo $row['total']; ?></span>  </div>
             </div>
             <div class="remove">
-                <button class="delete" data-id=<?php echo $row['id'] ?> ><i class="fas fa-trash"></i></button>
+                <button class="delete" data-id="<?php echo $row['id'] ?>" ><i class="fas fa-trash"></i></button>
             </div>
         </div>
         <?php } ?>

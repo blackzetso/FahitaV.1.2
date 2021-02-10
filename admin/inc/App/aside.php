@@ -37,8 +37,8 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label"> البنرات  </span> <i class="angle fa fa-angle-right"></i></a>
 						    <ul class="slide-menu">
 								<li><a href="slides.php" class="slide-item"> بنرات متحركه </a></li>
-								<li><a href="pending.php" class="slide-item"> بنرات علوية</a></li>
-								<li><a href="done.php" class="slide-item"> بنرات سفلية </a></li>  
+								<li><a href="top-ads.php" class="slide-item"> بنرات علوية</a></li>
+								<li><a href="bottom-ads.php" class="slide-item"> بنرات سفلية </a></li>  
 							</ul>
                         </li>
                          

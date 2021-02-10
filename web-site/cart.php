@@ -157,9 +157,9 @@
                                 <a href="index.php" class="button btn-continue-shopping">
                                     <?php echo translate('57'); ?>
                                 </a> 
-                                <button class="button btn-cart-to-checkout">
+                                <a href="checkout.php" class="button btn-cart-to-checkout">
                                     <?php echo translate('56'); ?>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -81,12 +81,15 @@
             <div class="item">
                 <input type="text" name="storey" required> <label for="">رقم الشقه/الطابق</label>
             </div>
-            <div class="time">
+            <!--<div class="time">
                 <h4>وقت استلام الطلب</h4>
                 <div class="hour">
-                    <span>من</span><input type="time" name="time_from" placeholder="اختر الساعه"><span>الي</span><input type="time" name="time_to" placeholder="اختر الساعه">
+                    <span>من</span>
+                    <input type="hidden" name="time_from" placeholder="اختر الساعه">
+                    <span>الي</span>
+                    <input type="hidden" name="time_to" placeholder="اختر الساعه">
                 </div>
-            </div>
+            </div>-->
             <div class="btn-save">
                 <input type="submit"  class="save" value="اتمام الطلب">
             </div>

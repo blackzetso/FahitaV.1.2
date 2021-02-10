@@ -29,8 +29,10 @@
 		<link rel="stylesheet" href="assets/plugins/chartist/chartist.css">
 		<link rel="stylesheet" href="assets/plugins/chartist/chartist-plugin-tooltip.css">
 
-		<!--Full calendar css-->
+		<!--Full calendar css--> 
 		<link rel="stylesheet" href="assets/plugins/fullcalendar/stylesheet1.css">
         <!-- Bootstrap-Iconpicker -->
         <link rel="stylesheet" href="assets/plugins/icon-picker/bootstrap-iconpicker.min.css"  > 
+        <link rel="stylesheet" href="assets/plugins/toastr/build/toastr.css"  >  
+        
 	</head>

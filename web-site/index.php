@@ -94,7 +94,7 @@
                     <div class="col-lg-4 banner-wrapp">
                         <div class="banner">
                             <div class="item-banner style7">
-                                <div class="inner" style="background-image: url(assets/images/<?php echo $row['img']; ?>);" >
+                                <div class="inner" style="background-image: url(../img/slides/<?php echo $row['img']; ?>);" >
                                     
                                     <div class="banner-content" style="height: 220px;" >
                                      
@@ -164,7 +164,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="banner" >
                             <div class="item-banner style4">
-                                <div class="inner" style="background-image:url('assets/images/m-ad-1.jpg'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                                <div class="inner" style="background-image:url('../img/slides//m-ad-1.jpg'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
                                     <div class="banner-content">
                                          
                                     </div>
@@ -175,7 +175,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="banner" >
                             <div class="item-banner style5" >
-                                <div class="inner" style="background-image:url('assets/images/m-ad-1.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                                <div class="inner" style="background-image:url('../img/slides//m-ad-1.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
                                     <div class="banner-content">
                                         
                                     </div>
@@ -190,7 +190,7 @@
             <div class="container">
                 <div class="banner">
                     <div class="item-banner style17">
-                        <div class="inner" style="background-image:url('assets/images/slide-in-middel.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                        <div class="inner" style="background-image:url(../img/slides//slide-in-middel.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
                              
                         </div>
                     </div>
