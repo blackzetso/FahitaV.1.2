@@ -33,7 +33,7 @@
         $neName   = rand(0,10000000) .'.' . $Extension;
         move_uploaded_file($tmp ,'../../../img/slides/' . $neName);
         
-        $stmt = $con->prepare("UPDATE top_ads SET img = ? WHERE id = ?");
+        $stmt = $con->prepare("UPDATE bottom_ads SET img = ? WHERE id = ?");
         $stmt->execute([$neName,$id]);
         if($stmt){
             echo successMessage('تم تعديل صورة المنتج بنجاح');

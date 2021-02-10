@@ -163,8 +163,13 @@
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="banner" >
+                             <?php 
+                                $stmt = $con->prepare("SELECT * FROM bottom_ads WHERE id = '1' ");
+                                $stmt->execute();
+                                $bunner1 = $stmt->fetch();
+                            ?>
                             <div class="item-banner style4">
-                                <div class="inner" style="background-image:url('../img/slides//m-ad-1.jpg'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                                <div class="inner" style="background-image:url('../img/slides/<?php echo $bunner1['img']; ?>'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
                                     <div class="banner-content">
                                          
                                     </div>
@@ -174,8 +179,13 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="banner" >
+                            <?php 
+                                $stmt = $con->prepare("SELECT * FROM bottom_ads WHERE id = '2' ");
+                                $stmt->execute();
+                                $bunner2 = $stmt->fetch();
+                            ?>
                             <div class="item-banner style5" >
-                                <div class="inner" style="background-image:url('../img/slides//m-ad-1.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                                <div class="inner" style="background-image:url('../img/slides/<?php echo $bunner2['img']; ?>'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
                                     <div class="banner-content">
                                         
                                     </div>
@@ -189,8 +199,13 @@
         <div class="banner-wrapp rows-space-65">
             <div class="container">
                 <div class="banner">
+                    <?php 
+                        $stmt = $con->prepare("SELECT * FROM bottom_ads WHERE id = '3' ");
+                        $stmt->execute();
+                        $bunner3 = $stmt->fetch();
+                    ?>
                     <div class="item-banner style17">
-                        <div class="inner" style="background-image:url(../img/slides//slide-in-middel.png'); background-size:100% 100%;height: 300px;background-repeat: unset;" >
+                        <div class="inner" style="background-image:url('../img/slides/<?php echo $bunner3['img']; ?>') !important; background-size:100% 100%;height: 300px;background-repeat: unset;" >
                              
                         </div>
                     </div>
@@ -378,10 +393,10 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">
-                                        EU Free Delivery
+                                        <?php echo translate('60') ?>
                                     </h4>
                                     <div class="text">
-                                        Free Delivery on all order from EU <br/>with price more than $90.00
+                                        <?php echo nl2br(translate('61')); ?>
                                     </div>
                                 </div>
                             </div>
@@ -395,10 +410,10 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">
-                                        Money Guarantee
+                                        <?php echo translate('62') ?>
                                     </h4>
                                     <div class="text">
-                                        30 Days money back guarantee <br/>no question asked!
+                                        <?php echo nl2br(translate('63')); ?>
                                     </div>
                                 </div>
                             </div>
@@ -412,10 +427,10 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">
-                                        Online Support 24/7
+                                        <?php echo translate('64') ?>
                                     </h4>
                                     <div class="text">
-                                        We’re here to support to you. <br/>Let’s shopping now!
+                                        <?php echo nl2br(translate('65')); ?>
                                     </div>
                                 </div>
                             </div>

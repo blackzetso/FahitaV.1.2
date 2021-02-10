@@ -4,11 +4,11 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
     $id  = $_POST['id'];
-    $number = $_POST['number'];
+    //$number = $_POST['number'];
     $url  = $_POST['url'];
     
-    $stmt = $con->prepare("UPDATE top_ads SET order_number = ? , url = ? WHERE id = ? ");
-    $stmt->execute([$number,$url,$id]);
+    $stmt = $con->prepare("UPDATE bottom_ads SET url = ? WHERE id = ? ");
+    $stmt->execute([$url,$id]);
     if($stmt){ ?>
         <script>
             toastr.success('تم تعديل البيانات');

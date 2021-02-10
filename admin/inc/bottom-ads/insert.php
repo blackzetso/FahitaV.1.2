@@ -32,7 +32,7 @@
             $neName   = rand(0,10000000) .'.' . $Extension;
             move_uploaded_file($tmp ,'../../../img/slides/' . $neName);
             
-            $stmt = $con->prepare("INSERT INTO `top_ads` (`img`,`url`,`order_number`) VALUES (?,?,?);");
+            $stmt = $con->prepare("INSERT INTO `bottom_ads` (`img`,`url`,`order_number`) VALUES (?,?,?);");
             $stmt->execute([$neName,$url,$number]);
 
         if($stmt){

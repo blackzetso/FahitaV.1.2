@@ -2,7 +2,7 @@
       
       $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 
-      $stmt = $con->prepare("SELECT * FROM top_ads WHERE id = ? ");
+      $stmt = $con->prepare("SELECT * FROM bottom_ads WHERE id = ? ");
       $stmt->execute([$id]);
       $row = $stmt->fetch();
 
@@ -35,15 +35,10 @@
                                         
                                         <form id="edit" >
                                             <div class="row text-right" dir="rtl" >  
-                                                <div class="col-md-6 col-sm-12" >
-                                                    <div class="form-group text-right" >
-                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> رقم الترتيب : <span class="text-danger" >*</span></label>
-                                                        <input type="number" class="form-control text-right" value="<?php echo $row['order_number'] ?>" dir="rtl" name="number"required > 
-                                                    </div>
-                                                </div>
+                                               
                                                  
                                                  
-                                                <div class="col-md-6 col-sm-12" >
+                                                <div class="col-md-12 col-sm-12" >
                                                     <div class="form-group text-right" >
                                                         <label for="recipient-name" class="form-control-label " dir="rtl">  الرابط  :  </label>
                                                         <input type="url" class="form-control text-right" value="<?php echo $row['url'] ?>" dir="rtl" name="url" >
@@ -137,7 +132,7 @@
                     var Form = $(this);
                     $.ajax({
                         type:'POST',
-                        url:'inc/top-ads/edit.php',
+                        url:'inc/bottom-ads/edit.php',
                         beforeSend:function(){
                             Form.find("button[type='submit']").prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
                             Form.find("button[type='submit']").attr('disabled','true');
@@ -161,7 +156,7 @@
                     var Form = $(this);
                     $.ajax({
                         type:'POST',
-                        url:'inc/top-ads/img.php',
+                        url:'inc/bottom-ads/img.php',
                         beforeSend:function(){
                             Form.find("button[type='submit']").prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
                             Form.find("button[type='submit']").attr('disabled','true');

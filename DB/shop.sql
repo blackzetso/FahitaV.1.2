@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 فبراير 2021 الساعة 01:16
+-- Generation Time: 10 فبراير 2021 الساعة 02:59
 -- إصدار الخادم: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -95,7 +95,38 @@ INSERT INTO `attributes` (`id`, `key_name`) VALUES
 (56, 'Checkout'),
 (57, 'Continue Shopping'),
 (58, 'view cart'),
-(59, 'Subtotal');
+(59, 'Subtotal'),
+(60, 'EU FREE DELIVERY'),
+(61, 'Free Delivery on all order from EU\r\nwith price more than $90.00'),
+(62, 'MONEY GUARANTEE'),
+(63, '30 Days money back guarantee\r\nno question asked!'),
+(64, 'ONLINE SUPPORT 24/7'),
+(65, 'We’re here to support to you.\r\nLet’s shopping now!');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `bottom_ads`
+--
+
+CREATE TABLE `bottom_ads` (
+  `id` int(11) NOT NULL,
+  `img` varchar(50) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text CHARACTER SET utf8mb4 NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 0,
+  `order_number` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `bottom_ads`
+--
+
+INSERT INTO `bottom_ads` (`id`, `img`, `title`, `description`, `url`, `active`, `order_number`) VALUES
+(1, 'banner-home-5.jpg', 'pick yout items', 'Adipiscing elit curabitur senectus sem\r\n', 'categories.php', 0, 0),
+(2, 'banner-home-6.jpg', 'Best Of\r\nProducts', 'Cras pulvinar loresum dolor conse\r\n', 'categories.php', 0, 0),
+(3, '5720794.png', '', '', 'http://localhost/Abuahmed//', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -120,9 +151,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `product`, `name`, `unit`, `price`, `qty`, `total`, `user`) VALUES
 (187, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 'unite1', '23', '5', '115', 18),
-(190, 550, 'BST وش فانوس شبورة شمال - مرسيدس C Class [ 2001 - 2007 ] | ص', NULL, '60', '3', '60', 1),
-(193, 551, 'باغة خلفي - سوزوكي ماروتي [ 2000 - 2014 ] | هند', NULL, '60', '1', '60', 1),
-(194, 552, 'TEPO فانوس خلفي داخلي - هيونداي النترا HD [ 2007 - 2011 ] | ', NULL, '195', '1', '195', 1);
+(198, 550, 'BST وش فانوس شبورة شمال - مرسيدس C Class [ 2001 - 2007 ] | ص', NULL, '60', '1', '60', 1),
+(199, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', NULL, '23', '1', '23', 1);
 
 -- --------------------------------------------------------
 
@@ -230,18 +260,6 @@ CREATE TABLE `orders` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- إرجاع أو استيراد بيانات الجدول `orders`
---
-
-INSERT INTO `orders` (`id`, `city`, `zone`, `street`, `build`, `storey`, `orders`, `user`, `time_from`, `time_to`, `order_status`, `date`) VALUES
-(20, 'القاهره ', 'مدينه جسر السويس الجديده ', 'شارع العشريني ', '٥', '٥', NULL, 9, '00:53', '00:43', 'طلب جديد', '2020-12-28'),
-(25, 'القاهره ', 'مدينه جسر السويس الجديده ', 'شارع العشريني ', '٥عماره ٥', '٥١٢٣٤٤', NULL, 9, '05:16', '03:16', 'طلب جديد', '2021-01-03'),
-(26, 'القاهره ', 'مدينه جسر السويس الجديده ', 'شارع العشريني ', '٥عماره ٥', '٥١٢٣٤٤', NULL, 9, '05:19', '05:19', 'طلب جديد', '2021-01-03'),
-(39, 'س', 'سش', 'سش', 'سش', 'سش', NULL, 1, '19:46', '13:41', 'طلب جديد', '2021-01-13'),
-(41, 'س', 'سش', 'سش', 'سش', 'سش', NULL, 1, '02:33', '03:33', 'طلب جديد', '2021-01-23'),
-(42, 'As', 'As', 'As', '2', '4', NULL, 18, '18:46', '18:46', 'طلب جديد', '2021-02-01');
-
 -- --------------------------------------------------------
 
 --
@@ -258,22 +276,6 @@ CREATE TABLE `order_items` (
   `qty` varchar(20) DEFAULT '0',
   `total` varchar(20) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- إرجاع أو استيراد بيانات الجدول `order_items`
---
-
-INSERT INTO `order_items` (`id`, `item_id`, `name`, `order_id`, `date`, `price`, `qty`, `total`) VALUES
-(15, 299, 'سبانخ', 20, '2020-12-28', '5', '6', '30'),
-(16, 283, 'خيار', 20, '2020-12-28', '5', '4', '20'),
-(17, 279, 'جزر', 20, '2020-12-28', '5', '4.5', '22.5'),
-(30, 134, 'طماطم ', 25, '2021-01-03', '5', '4', '20'),
-(31, 283, 'خيار', 25, '2021-01-03', '5', '5', '25'),
-(32, 280, 'كوسا', 25, '2021-01-03', '5', '3', '15'),
-(33, 260, 'بذور الخردل (125)', 26, '2021-01-03', '31', '2', '62'),
-(58, 528, 'بصل اخضر ', 39, '2021-01-13', '5', '3', '15'),
-(60, 528, 'بصل اخضر ', 41, '2021-01-23', '5', '1', '5'),
-(61, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 42, '2021-02-01', '23', '28', '644');
 
 -- --------------------------------------------------------
 
@@ -433,7 +435,8 @@ CREATE TABLE `top_ads` (
 
 INSERT INTO `top_ads` (`id`, `img`, `title`, `description`, `url`, `active`, `order_number`) VALUES
 (1, 'banner-home-5.jpg', 'pick yout items', 'Adipiscing elit curabitur senectus sem\r\n', 'categories.php', 1, 0),
-(2, 'banner-home-6.jpg', 'Best Of\r\nProducts', 'Cras pulvinar loresum dolor conse\r\n', 'categories.php', 1, 0);
+(2, 'banner-home-6.jpg', 'Best Of\r\nProducts', 'Cras pulvinar loresum dolor conse\r\n', 'categories.php', 1, 0),
+(4, '2640182.jpeg', '', '', 'http://localhost//', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -566,7 +569,19 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (113, 57, 'Continue Shopping', 2),
 (114, 57, 'مواصلة التسوق', 1),
 (115, 58, 'View cart', 2),
-(116, 58, 'عرض السلة', 1);
+(116, 58, 'عرض السلة', 1),
+(117, 60, 'EU FREE DELIVERY', 2),
+(118, 60, 'توصيل مجاني من الاتحاد الأوروبي', 1),
+(119, 61, 'Free Delivery on all order from EU\r\nwith price more than $90.00', 2),
+(120, 61, 'توصيل مجاني لجميع الطلبات من الاتحاد الأوروبي بسعر أكثر من 90.00 دولار', 1),
+(121, 62, 'MONEY GUARANTEE', 2),
+(122, 62, 'ضمان المال', 1),
+(123, 63, '30 Days money back guarantee\r\nno question asked!', 2),
+(124, 63, 'ضمان استرداد الأموال لمدة 30 يومًا بدون طرح أي سؤال!', 1),
+(125, 64, 'Online Support 24/7', 2),
+(126, 64, 'دعم اونلاين علي مدار 24/7\r\n', 1),
+(127, 65, 'We’re here to support to you.\r\nLet’s shopping now!', 2),
+(128, 65, 'نحن هنا لدعمك. لنتسوق الآن!', 1);
 
 -- --------------------------------------------------------
 
@@ -640,6 +655,12 @@ INSERT INTO `user_settings` (`id`, `user`, `language`) VALUES
 -- Indexes for table `attributes`
 --
 ALTER TABLE `attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bottom_ads`
+--
+ALTER TABLE `bottom_ads`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -756,13 +777,19 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT for table `attributes`
 --
 ALTER TABLE `attributes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `bottom_ads`
+--
+ALTER TABLE `bottom_ads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -828,13 +855,13 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `top_ads`
 --
 ALTER TABLE `top_ads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `translation`
 --
 ALTER TABLE `translation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT for table `unit`

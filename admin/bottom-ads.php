@@ -1,9 +1,8 @@
 <?php include 'init.php';  
      
-      $stmt = $con->prepare("SELECT * FROM top_ads ORDER BY id DESC");
+      $stmt = $con->prepare("SELECT * FROM bottom_ads ORDER BY id DESC");
       $stmt->execute();
-      $rows = $stmt->fetchAll(); 
-
+      $rows = $stmt->fetchAll();
 
       function ActiveBtn($active){
           //global $active;
@@ -59,10 +58,8 @@
                                                         </td>
 														<td><?php echo $cat['url']; ?></td>
  														<th id="id<?php echo $cat['id'] ?>" class="wd-15p">  
-                                                            <a href="javascript:void(0)" onclick="getinfo('inc/top-ads/active.php?id=<?php echo $cat['id'] ?>','#id<?php echo $cat['id'] ?>')" class="btn <?php echo BtnColor($cat['active']); ?>" ><?php echo ActiveBtn($cat['active']); ?></a>
-                                                            <a href="top-ads-edit.php?id=<?php echo $cat['id'] ?>" class="btn btn-info" ><i class="fa fa-edit" ></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-danger delete" data-toggle="modal" data-target="#item" data-id="<?php echo $cat['id']; ?>" ><i class="fa fa-trash" ></i> </a>
-                                                        </th> 
+                                                            <a href="bottom-ads-edit.php?id=<?php echo $cat['id'] ?>" class="btn btn-info" ><i class="fa fa-edit" ></i></a>
+                                                         </th> 
 													</tr> 
                                                     <?php } ?>
 												</tbody>
@@ -179,31 +176,7 @@
 				$('#example').DataTable();
 			} );
 		</script>
-        <script > 
-                $(document).on('click','.delete',function(e){
-                   e.preventDefault();
-                   var id  = $(this).data('id');
-                   $("#item .del-btn").attr('data-id',id);
-                   $("#item .hidden-input").attr('value',id);
-                });
-
-                $(document).on('submit','#delForm',function(e){
-                   e.preventDefault();
-                    var idd = $('#item .del-btn').data('id');
-                   $.ajax({
-                       type: 'POST',
-                       url: 'inc/bottom-ads/delete.php',
-                       data: new FormData(this),
-                       contentType: false,
-                       cache: false,
-                       processData:false,
-                       success:function(data){
-                           //$('#success').html(data);
-                           $('.delete[data-id='+ idd +']').parent().parent().remove();
-                       }
-                   })
-                });
-            
+        <script >  
                 $(document).on('submit','#addSlide',function(event){
                     event.preventDefault(); 
                     var Form = $(this);
