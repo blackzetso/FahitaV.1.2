@@ -14,6 +14,10 @@
         $stmt->execute([$_SESSION['id']]);
         $info = $stmt->fetch();
         $total = $info['SUM(total)'];
+        
+        $stmt = $con->prepare("SELECT * FROM users WHERE id = ? ");
+        $stmt->execute([$_SESSION['id']]);
+        $user = $stmt->fetch();
     }
 ?>
 <header class="header style7">
@@ -30,7 +34,7 @@
                         
                         <a href="#" class="active language-toggle" data-gnash="gnash-dropdown">
 									<span>
-										English (USD)
+                                        <i class="fas fa-globe-asia" ></i>  
 									</span>
                         </a>
                         <ul class="gnash-submenu">
@@ -64,10 +68,10 @@
                 </div>
                 <div class="col-lg-7 col-sm-8 col-md-6 col-xs-5 col-ts-12">
                     <div class="block-search-block">
-                        <form action="search.php" class="form-search form-search-width-category">
+                            <form action="search.php" class="form-search form-search-width-category">
                             <div class="form-content"> 
                                 <div class="inner">
-                                    <input type="text" class="input" name="s" value="" placeholder="Search here">
+                                    <input type="text" class="input" name="s" value="" placeholder="<?php echo translate('47'); ?>">
                                 </div>
                                 <button class="btn-search" type="submit">
                                     <span class="icon-search"></span>
@@ -111,7 +115,7 @@
 															</span>
 														</span>
                                                 <span class="product-quantity">
-															(x1)
+															(x<?php echo $item['qty'] ?>)
 														</span>
                                                 <div class="product-remove">
                                                     <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -147,6 +151,7 @@
                             <a href="javascript:void(0);" data-gnash="gnash-dropdown">
                                 <span class="flaticon-user"></span>
                             </a>
+                            <?php if(!isset($_SESSION['id'])) { ?>
                             <div class="header-account gnash-submenu">
                                 <div class="header-user-form-tabs">
                                     <ul class="tab-link">
@@ -157,21 +162,22 @@
                                             <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">Register</a>
                                         </li>
                                     </ul>
+                                    
                                     <div class="tab-container">
                                         <div id="header-tab-login" class="tab-panel active">
-                                            <form method="post" class="login form-login">
+                                            <form id="login" method="post" class="login form-login">
                                                 <p class="form-row form-row-wide">
-                                                    <input type="email" placeholder="Email" class="input-text">
+                                                    <input type="email" name="email" placeholder="Email" class="input-text">
                                                 </p>
                                                 <p class="form-row form-row-wide">
-                                                    <input type="password" class="input-text" placeholder="Password">
+                                                    <input type="password" name="password" class="input-text" placeholder="Password">
                                                 </p>
                                                 <p class="form-row">
                                                     <label class="form-checkbox">
                                                         <input type="checkbox" class="input-checkbox">
                                                         <span>
-																	Remember me
-																</span>
+                                                            Remember me
+                                                        </span>
                                                     </label>
                                                     <input type="submit" class="button" value="Login">
                                                 </p>
@@ -181,12 +187,22 @@
                                             </form>
                                         </div>
                                         <div id="header-tab-rigister" class="tab-panel">
-                                            <form method="post" class="register form-register">
+                                            <form id="register" method="post" class="register form-register">
                                                 <p class="form-row form-row-wide">
-                                                    <input type="email" placeholder="Email" class="input-text">
+                                                    <label class="text"><?php echo translate('6') ?></label>
+                                                    <input title="<?php echo translate('6') ?>" name="name" type="text" class="input-text">
                                                 </p>
                                                 <p class="form-row form-row-wide">
-                                                    <input type="password" class="input-text" placeholder="Password">
+                                                    <label class="text"><?php echo translate('9') ?></label>
+                                                    <input title="<?php echo translate('9') ?>" name="email" type="email" class="input-text">
+                                                </p>
+                                                <p class="form-row form-row-wide">
+                                                    <label class="text"><?php echo translate('10') ?></label>
+                                                    <input title="<?php echo translate('10') ?>" type="text" name="phone" class="input-text">
+                                                </p>
+                                                <p class="form-row form-row-wide">
+                                                    <label class="text"><?php echo translate('40') ?></label>
+                                                    <input title="<?php echo translate('40') ?>" name="password" type="password" class="input-text">
                                                 </p>
                                                 <p class="form-row">
                                                     <input type="submit" class="button" value="Register">
@@ -194,8 +210,72 @@
                                             </form>
                                         </div>
                                     </div>
+                                   
                                 </div>
                             </div>
+                            <?php } else { ?>
+                             <div class="header-account gnash-submenu">
+                                <div class="header-user-form-tabs">
+                                    <ul class="tab-link row">
+                                        <li class="active col-sm-4 text-center">
+                                            <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">
+                                                <i class="fa fa-user" ></i>
+                                                 
+                                            </a>
+                                        </li>
+                                        <li class="col-sm-4 text-center">
+                                            <a href="orders.php">
+                                                <i class="fas fa-box" ></i>
+                                                 
+                                            </a>
+                                        </li>
+                                        <li class="col-sm-4 text-center">
+                                            <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">
+                                                <i class="fas fa-key" ></i>
+                                                 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="tab-container">
+                                        <div id="header-tab-login" class="tab-panel active">
+                                            <form id="edit" method="post" class="login form-login">
+                                                <p class="form-row form-row-wide"> 
+                                                    <input title="<?php echo translate('6') ?>" name="name" value="<?php echo $user['full_name'] ?>" type="text" class="input-text">
+                                                </p>
+                                                <p class="form-row form-row-wide">
+                                                    <input type="email" name="email" value="<?php echo $user['email'] ?>" class="input-text">
+                                                </p>
+                                                <p class="form-row form-row-wide">
+                                                    <input type="text" name="phone" class="input-text" value="<?php echo $user['phone_number'] ?>" >
+                                                </p>
+                                                <p class="form-row">
+                                                    <input type="submit" class="button" value="save">
+                                                </p>
+                                            </form>
+                                        </div>
+                                        <div id="header-tab-rigister" class="tab-panel">
+                                            <form id="password" method="post" class="register form-register"> 
+                                                <p class="form-row form-row-wide"> 
+                                                    <input title="<?php echo translate('80') ?>" name="password" type="password" class="input-text" placeholder="<?php echo translate('80') ?>" >
+                                                </p>
+                                                <p class="form-row form-row-wide"> 
+                                                    <input title="<?php echo translate('40') ?>" name="newpass"  type="password" class="input-text" placeholder="<?php echo translate('40') ?>">
+                                                </p>
+                                                <p class="form-row form-row-wide"> 
+                                                    <input title="<?php echo translate('81') ?>" name="confpass" type="password" class="input-text" placeholder="<?php echo translate('81') ?>" >
+                                                </p>
+                                                <p class="form-row">
+                                                    <input type="submit" class="button" value="save">
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                           
+                            <?php } ?>
                         </div>
                         <a class="menu-bar mobile-navigation menu-toggle" href="#">
                             <span></span>
@@ -253,69 +333,31 @@
                             <li class="menu-item  menu-item-has-children ">
                                 <a href="index.php" class="gnash-menu-item-title" title="Home"><?php echo translate('1'); ?></a>
                             </li>
+                            <?php
+                                $stmt = $con->prepare("SELECT * FROM categories WHERE navbar = '1' ORDER BY order_number");
+                                $stmt->execute();
+                                $ncats = $stmt->fetchAll();
+                            
+                                foreach($ncats as $cat){ ?> 
+                            <li class="menu-item  menu-item-has-children ">
+                                <a href="category.php?id=<?php echo $cat['id']; ?>" class="gnash-menu-item-title" title="<?php echo $cat['name']; ?>"><?php echo $cat['name']; ?></a>
+                            </li>
+                            <?php } ?>
+                            <!--
                             <li class="menu-item menu-item-has-children">
                                 <a href="contact.php" class="gnash-menu-item-title" title="<?php echo translate('4'); ?>"><?php echo translate('4'); ?></a>
                               
                             </li>
-                            <!--
-                            <li class="menu-item  menu-item-has-children item-megamenu dwon">
-                                <a href="#" class="gnash-menu-item-title" title="Pages">Pages</a>
-                                <span class="toggle-submenu"></span>
-                                <div class="submenu mega-menu menu-page">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
-                                            <div class="gnash-custommenu default">
-                                                <h2 class="widgettitle">Shop Pages</h2>
-                                                <ul class="menu">
-                                                    <li class="menu-item">
-                                                        <a href="shoppingcart.html">Shopping Cart</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="checkout.html">Checkout</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="contact.html">Contact us</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="404page.html">404</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="login.html">Login/Register</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
-                                            <div class="gnash-custommenu default">
-                                                <h2 class="widgettitle">Product</h2>
-                                                <ul class="menu">
-                                                    <li class="menu-item">
-                                                        <a href="productdetails-fullwidth.html">Product Fullwidth</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="productdetails-leftsidebar.html">Product left
-                                                            sidebar</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="productdetails-rightsidebar.html">Product right
-                                                            sidebar</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 menu-page-item">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> -->
+                          
                             <li class="menu-item">
                                 <a href="policy.php" class="gnash-menu-item-title" title="About"><?php echo translate('39') ?></a>
                             </li>
                             <li class="menu-item">
-                                <a href="about.php" class="gnash-menu-item-title" title="About"><?php echo translate('38') ?></a>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#wanted" class="gnash-menu-item-title" title="About"><?php echo translate('74') ?></a>
                             </li>
+                            <li class="menu-item">
+                                <a href="about.php" class="gnash-menu-item-title" title="About"><?php echo translate('38') ?></a>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -323,3 +365,4 @@
         </div>
     </div>
 </header>
+<div id="wantedSuccess" ></div>

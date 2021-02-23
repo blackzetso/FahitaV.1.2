@@ -115,10 +115,10 @@
                                         <td class="product-quantity" data-title="Quantity">
                                             <div class="quantity">
                                                 <div class="control">
-                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                   <!-- <a class="btn-number qtyminus quantity-minus" href="#">-</a> -->
                                                     <input type="text" data-step="1" data-min="0" value="<?php echo $item['qty']; ?>" title="Qty"
-                                                           class="input-qty qty" size="4">
-                                                    <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                           class="input-qty qty" size="4" disabled>
+                                                   <!-- <a href="#" class="btn-number qtyplus quantity-plus">+</a> -->
                                                 </div>
                                             </div>
                                         </td>
@@ -169,39 +169,6 @@
     </main>
 </div>
  <?php include $App .'footer.php'; ?>
-<a href="#" class="backtotop">
-    <i class="fa fa-angle-double-up"></i>
-</a>
-<script src="assets/js/jquery-1.12.4.min.js"></script>
-<script src="assets/js/jquery.plugin-countdown.min.js"></script>
-<script src="assets/js/jquery-countdown.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-<script src="assets/js/isotope.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/jquery-ui.min.js"></script>
-<script src="assets/js/mobile-menu.js"></script>
-<script src="assets/js/chosen.min.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/jquery.elevateZoom.min.js"></script>
-<script src="assets/js/jquery.actual.min.js"></script>
-<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
-<script src="assets/js/lightbox.min.js"></script>
-<script src="assets/js/owl.thumbs.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/frontend-plugin.js"></script>
-<script>
-    window.onload = function(){
-
-          window.getinfo = function(urlx,id){
-                $.get(urlx).done(function(data){
-
-                    $(id).html(data);
-                    $(hide).hide();
-                });  
-          }
-        }; 
-</script>
+ 
 </body>
 </html>

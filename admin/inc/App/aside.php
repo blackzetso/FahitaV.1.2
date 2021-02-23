@@ -3,7 +3,7 @@
 					<div class="app-sidebar__user">
 					    <div class="dropdown">
 							<a class="nav-link pl-2 pr-2 leading-none d-flex" data-toggle="dropdown" href="#">
-								<img alt="image" src="assets/img/avatar/avatar-1.jpeg" class=" avatar-md rounded-circle">
+								<img alt="image" src="img/avatar/<?php echo avatar($users['img']); ?>" class=" avatar-md rounded-circle">
 								<span class="ml-2 d-lg-block">
 									<span class="text-dark app-sidebar__user-name mt-5"><?php echo ucfirst(user($_SESSION['admin'],'full_name')); ?></span><br>
 									<span class="text-muted app-sidebar__user-name text-sm"> الصلاحية : مسؤل </span>
@@ -20,6 +20,9 @@
 						</li>
                         <li>
 							<a class="side-menu__item" href="units.php"><i class="side-menu__icon icon icon-handbag"></i><span class="side-menu__label">الوحدات</span></a>
+						</li>
+                         <li class="slide">
+							<a class="side-menu__item" href="brands.php"><i class="side-menu__icon fe fe-shield"></i><span class="side-menu__label"> الماركات </span> </a>
 						</li>
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">إدارة الطلبات</span><i class="angle fa fa-angle-right"></i></a>
@@ -41,17 +44,17 @@
 								<li><a href="bottom-ads.php" class="slide-item"> بنرات سفلية </a></li>  
 							</ul>
                         </li>
-                         
                         <li class="slide">
-							<a class="side-menu__item" href="settings.php"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label"> الإعدادات  </span> </a>
-						</li>
-					    <li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-users"></i><span class="side-menu__label"> المستخدمين </span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li><a href="admins.php" class="slide-item"> المسؤولين </a></li>
 								<li><a href="users.php" class="slide-item"> الأعضاء </a></li> 
 							</ul>
 						</li>
+                        <li class="slide">
+							<a class="side-menu__item" href="settings.php"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label"> الإعدادات  </span> </a>
+						</li>
+					    
                         
 					</ul>
 				</aside>

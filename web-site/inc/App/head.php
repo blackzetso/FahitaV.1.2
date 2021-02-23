@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
     <link rel="stylesheet" href="assets/css/toastr.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/color.css" >
+   <!-- <link rel="stylesheet" href="assets/css/color.css" > -->
     <?php if(isset($_COOKIE['langauge'])){
         if($_COOKIE['langauge'] == 'ar'){ ?>
     <link rel="stylesheet" href="assets/css/ar.css" >

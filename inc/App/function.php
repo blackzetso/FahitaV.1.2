@@ -101,6 +101,12 @@
         return $msg;
     }
     
+    // Success Message Function
+    function warningMessage($content){
+        $msg = '<div class="alert alert-warning text-center" >'.$content.'</div>';
+        return $msg;
+    }
+
     // Js Redirect To Url Finction 
     function redirect($url){
         echo "<script>document.location.href='".$url."'</script>";

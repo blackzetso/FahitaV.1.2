@@ -75,7 +75,13 @@
         $msg = '<div class="alert alert-success text-center" >'.$content.'</div>';
         return $msg;
     }
-    
+
+    // Success Message Function
+    function warningMessage($content){
+        $msg = '<div class="alert alert-warning text-center" >'.$content.'</div>';
+        return $msg;
+    }
+
     // Js Redirect To Url Finction 
     function redirect($url){
         echo "<script>document.location.href='".$url."'</script>";
@@ -149,6 +155,20 @@
             $result = $totalPage;
         } 
         return $result;
+    }
+
+    function ordersLink(){
+        if(isset($_SESSION['id'])) {
+            $link = '<a href="orders.php" >
+                        <span class="flaticon-user"></span>
+                    </a>';
+        }else {
+            $link = '<a href="javascript:void(0);" data-gnash="gnash-dropdown">
+                        <span class="flaticon-user"></span>
+                    </a>'; 
+        }
+        
+        return $link;
     }
 
  

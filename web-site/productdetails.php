@@ -128,11 +128,11 @@
                                 <span>$<?php echo $row['price']-$row['discount']; ?></span>
                             </div>
                             <div class="product-details-description">
-                                <ul>
+                                <!--<ul>
                                     <li>Vestibulum tortor quam</li>
                                     <li>Imported</li>
                                     <li>Art.No. 06-7680</li>
-                                </ul>
+                                </ul>-->
                             </div> 
                             <div class="group-button">
                                 <!--
@@ -148,23 +148,29 @@
                                     </div>
                                 </div>
                                 <div class="quantity-add-to-cart">
-                                    <div class="quantity">
-                                        <div class="control">
-                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                            <input type="text" data-step="1" data-min="0" value="1" title="Qty"
-                                                   class="input-qty qty" size="4">
-                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                    <form id="addToCart" >
+                                        <div class="quantity">
+                                            <div class="control">
+                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                <input type="text" name="qty" data-step="1" data-min="0" value="1" title="Qty"
+                                                       class="input-qty qty" size="4">
+                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button class="single_add_to_cart_button button"><?php echo translate('19'); ?></button>
+                                        <input type="hidden" name="id" value="<?php echo $id ?>" >
+                                        <button type="submit" class="single_add_to_cart_button button"><?php echo translate('19'); ?></button>
+                                    </form>
+                                    <div id="cArt" ></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div style="clear: left;"></div>
+              <!--
                     <div class="related products product-grid">
                         <h2 class="product-grid-title">You may also like</h2>
                         <div class="owl-products owl-slick equal-container nav-center"  data-slick ='{"autoplay":false, "autoplaySpeed":1000, "arrows":true, "dots":false, "infinite":true, "speed":800, "rows":1}' data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":3}},{"breakpoint":"1200","settings":{"slidesToShow":2}},{"breakpoint":"992","settings":{"slidesToShow":2}},{"breakpoint":"480","settings":{"slidesToShow":1}}]'>
+                            
                             <div class="product-item style-1">
                                 <div class="product-inner equal-element">
                                     <div class="product-top">
@@ -220,351 +226,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-													<span class="onnew">
-														<span class="text">
-															new
-														</span>
-													</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="assets/images/product-item-2.jpg" alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Cavendish Bananas</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    $65
-                                                </del>
-                                                <ins>
-                                                    $45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-													<span class="onnew">
-														<span class="text">
-															new
-														</span>
-													</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="assets/images/product-item-3.jpg" alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Watermelon</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    $65
-                                                </del>
-                                                <ins>
-                                                    $45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-													<span class="onnew">
-														<span class="text">
-															new
-														</span>
-													</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="assets/images/product-item-4.jpg" alt="img">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Green beans</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">
-                                                    (3)
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <del>
-                                                    $65
-                                                </del>
-                                                <ins>
-                                                    $45
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             
                         </div>
+                    
                     </div>
+              -->
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<footer class="footer style7">
-    <div class="container">
-        <div class="container-wapper">
-            <div class="row">
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-sm hidden-md hidden-lg">
-                    <div class="gnash-newsletter style1">
-                        <div class="newsletter-head">
-                            <h3 class="title">Newsletter</h3>
-                        </div>
-                        <div class="newsletter-form-wrap">
-                            <div class="list">
-                                Sign up for our free video course and <br/> urban garden inspiration
-                            </div>
-                            <input type="email" class="input-text email email-newsletter"
-                                   placeholder="Your email letter">
-                            <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="gnash-custommenu default">
-                        <h2 class="widgettitle">Quick Menu</h2>
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="#">New arrivals</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Life style</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Pumpkin</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Leafy green</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Soybeans</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs">
-                    <div class="gnash-newsletter style1">
-                        <div class="newsletter-head">
-                            <h3 class="title">Newsletter</h3>
-                        </div>
-                        <div class="newsletter-form-wrap">
-                            <div class="list">
-                                Sign up for our free video course and <br/> urban garden inspiration
-                            </div>
-                            <input type="email" class="input-text email email-newsletter"
-                                   placeholder="Your email letter">
-                            <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="gnash-custommenu default">
-                        <h2 class="widgettitle">Information</h2>
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="#">FAQs</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Track Order</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Delivery</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Contact Us</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Return</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-end">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <div class="gnash-socials">
-                            <ul class="socials">
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="coppyright">
-                            Copyright © 2020
-                            <a href="#">Gnash</a>
-                            . All rights reserved
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<div class="footer-device-mobile">
-    <div class="wapper">
-        <div class="footer-device-mobile-item device-home">
-            <a href="index.html">
-					<span class="icon">
-						<i class="fa fa-home" aria-hidden="true"></i>
-					</span>
-                Home
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-wishlist">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-heart" aria-hidden="true"></i>
-					</span>
-                Wishlist
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-cart">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-shopping-basket" aria-hidden="true"></i>
-						<span class="count-icon">
-							0
-						</span>
-					</span>
-                <span class="text">Cart</span>
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-user">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-user" aria-hidden="true"></i>
-					</span>
-                Account
-            </a>
-        </div>
-    </div>
-</div>
-<a href="#" class="backtotop">
-    <i class="fa fa-angle-double-up"></i>
-</a>
-<script src="assets/js/jquery-1.12.4.min.js"></script>
-<script src="assets/js/jquery.plugin-countdown.min.js"></script>
-<script src="assets/js/jquery-countdown.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-<script src="assets/js/isotope.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/jquery-ui.min.js"></script>
-<script src="assets/js/mobile-menu.js"></script>
-<script src="assets/js/chosen.min.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/jquery.elevateZoom.min.js"></script>
-<script src="assets/js/jquery.actual.min.js"></script>
-<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
-<script src="assets/js/lightbox.min.js"></script>
-<script src="assets/js/owl.thumbs.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
-<script src="assets/js/frontend-plugin.js"></script>
+    </div> 
+<?php include $App . 'footer.php'; ?> 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php include 'init.php'; 
+ؤ<?php include 'init.php'; 
 
       $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -44,14 +44,7 @@
                                                     <form id="date" >
                                                         <div class="form-group text-right">
                                                             <label> اظهار حسب التاريخ </label>
-                                                            <select  class="form-control" name="date" >
-                                                                <?php 
-                                                                    $begin = new DateTime("01-01-2021");
-                                                                    $end   = new DateTime("01-01-2022");
-                                                                    for($i = $begin; $i <= $end; $i->modify('+1 day')){ ?>
-                                                                    <option <?php if($i->format("Y-m-d") == $today){ echo 'selected'; } ?> value="<?php echo $i->format("Y-m-d"); ?>" ><?php echo $i->format("Y-m-d"); ?></option>
-                                                                <?php } ?>
-                                                            </select>
+                                                            <input type="date" class="form-control" name="date" >
                                                         </div> 
                                                     </form>
                                                 </div>

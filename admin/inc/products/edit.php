@@ -14,7 +14,8 @@
     $decimal  = $_POST['decimal'];
     $Availability = $_POST['Availability'];
     $category = $_POST['category'];
-    $subCat = $_POST['subCat']; 
+    $subCat = $_POST['subCat'];
+    $brand  = $_POST['brand'];
     
     if(isset($_POST['feature'])){ $feature = '1'; } else { $feature = '0';  }
     if(isset($_POST['bestSeller'])){ $bestSeller = '1'; } else { $bestSeller = '0';  }
@@ -35,9 +36,10 @@
                                 best_seller = ? ,
                                 new_arrivals = ? ,
                                 featured = ? ,
-                                Deal_Of_Day = ?
+                                Deal_Of_Day = ?,
+                                brand = ?
                                     WHERE id = ? ");
-    $stmt->execute([$name,$unit,$price,$discount,$order,$decimal,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$id]);
+    $stmt->execute([$name,$unit,$price,$discount,$order,$decimal,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand,$id]);
     if($stmt){
         echo successMessage('تم تعديل بيانات المنتج بنجاح');
     }

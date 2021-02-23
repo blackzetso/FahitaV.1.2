@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 فبراير 2021 الساعة 02:59
+-- Generation Time: 19 فبراير 2021 الساعة 20:51
 -- إصدار الخادم: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -101,7 +101,22 @@ INSERT INTO `attributes` (`id`, `key_name`) VALUES
 (62, 'MONEY GUARANTEE'),
 (63, '30 Days money back guarantee\r\nno question asked!'),
 (64, 'ONLINE SUPPORT 24/7'),
-(65, 'We’re here to support to you.\r\nLet’s shopping now!');
+(65, 'We’re here to support to you.\r\nLet’s shopping now!'),
+(66, 'City'),
+(67, 'zone'),
+(68, 'street'),
+(69, 'build'),
+(70, 'level'),
+(71, 'Your Order'),
+(73, 'Shipping Address'),
+(74, 'wanted orders'),
+(75, 'Register now'),
+(76, 'Login your Account'),
+(77, 'submit'),
+(78, 'close'),
+(79, 'Are you looking for a product not found?'),
+(80, 'current password'),
+(81, 'confirm password');
 
 -- --------------------------------------------------------
 
@@ -131,6 +146,26 @@ INSERT INTO `bottom_ads` (`id`, `img`, `title`, `description`, `url`, `active`, 
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `brand`
+--
+
+CREATE TABLE `brand` (
+  `id` int(11) NOT NULL,
+  `name` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
+  `image` varchar(40) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `brand`
+--
+
+INSERT INTO `brand` (`id`, `name`, `image`) VALUES
+(1, 'هيونداى', NULL),
+(2, 'بي ام دبليو', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `cart`
 --
 
@@ -151,8 +186,9 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `product`, `name`, `unit`, `price`, `qty`, `total`, `user`) VALUES
 (187, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 'unite1', '23', '5', '115', 18),
-(198, 550, 'BST وش فانوس شبورة شمال - مرسيدس C Class [ 2001 - 2007 ] | ص', NULL, '60', '1', '60', 1),
-(199, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', NULL, '23', '1', '23', 1);
+(203, 548, 'WINDA كاوتش 155/70 R13 - WP15 - | صيني', NULL, '442', '1', '442', 5),
+(204, 549, 'BRIDGESTONE 205/55 R17 91V - DHPS R كاوتش سيارة | أصلي', NULL, '3681', '1', '3681', 5),
+(207, 548, 'WINDA كاوتش 155/70 R13 - WP15 - | صيني', NULL, '442', '5', '3978', 1);
 
 -- --------------------------------------------------------
 
@@ -260,6 +296,13 @@ CREATE TABLE `orders` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- إرجاع أو استيراد بيانات الجدول `orders`
+--
+
+INSERT INTO `orders` (`id`, `city`, `zone`, `street`, `build`, `storey`, `orders`, `user`, `time_from`, `time_to`, `order_status`, `date`) VALUES
+(43, 'المدينة', 'المنطقة', 'الشارع', 'رقم العمارة', 'الطابق', NULL, 1, '', '', 'طلب جديد', '2021-02-11');
+
 -- --------------------------------------------------------
 
 --
@@ -276,6 +319,14 @@ CREATE TABLE `order_items` (
   `qty` varchar(20) DEFAULT '0',
   `total` varchar(20) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `item_id`, `name`, `order_id`, `date`, `price`, `qty`, `total`) VALUES
+(62, 550, 'BST وش فانوس شبورة شمال - مرسيدس C Class [ 2001 - 2007 ] | ص', 43, '2021-02-11', '60', '1', '60'),
+(63, 545, 'Genuine Vacuum hose black بي ام دبليو 1 Series [ 2004-2013 ]', 43, '2021-02-11', '23', '1', '23');
 
 -- --------------------------------------------------------
 
@@ -355,8 +406,9 @@ CREATE TABLE `slides` (
 --
 
 INSERT INTO `slides` (`id`, `img`, `number`, `url`) VALUES
-(18, '6015713.jpg', 2, ''),
-(19, '7437263.jpg', 1, '');
+(18, '6015713.jpg', 3, ''),
+(19, '7437263.jpg', 2, ''),
+(20, '9809452.jpeg', 1, '2');
 
 -- --------------------------------------------------------
 
@@ -434,9 +486,10 @@ CREATE TABLE `top_ads` (
 --
 
 INSERT INTO `top_ads` (`id`, `img`, `title`, `description`, `url`, `active`, `order_number`) VALUES
-(1, 'banner-home-5.jpg', 'pick yout items', 'Adipiscing elit curabitur senectus sem\r\n', 'categories.php', 1, 0),
-(2, 'banner-home-6.jpg', 'Best Of\r\nProducts', 'Cras pulvinar loresum dolor conse\r\n', 'categories.php', 1, 0),
-(4, '2640182.jpeg', '', '', 'http://localhost//', 0, 1);
+(1, 'banner-home-5.jpg', 'pick yout items', 'Adipiscing elit curabitur senectus sem\r\n', 'categories.php', 0, 0),
+(2, 'banner-home-6.jpg', 'Best Of\r\nProducts', 'Cras pulvinar loresum dolor conse\r\n', 'categories.php', 0, 0),
+(4, '2640182.jpeg', '', '', 'http://localhost//', 1, 1),
+(5, '9704152.jpg', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -530,7 +583,7 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (74, 38, 'من نحن', 1),
 (75, 39, 'Store policy', 2),
 (76, 39, 'سياسة المتجر', 1),
-(77, 40, NULL, 2),
+(77, 40, 'password', 2),
 (78, 40, 'كلمة المرور', 1),
 (79, 41, 'login', 2),
 (80, 41, 'دخول', 1),
@@ -581,7 +634,37 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (125, 64, 'Online Support 24/7', 2),
 (126, 64, 'دعم اونلاين علي مدار 24/7\r\n', 1),
 (127, 65, 'We’re here to support to you.\r\nLet’s shopping now!', 2),
-(128, 65, 'نحن هنا لدعمك. لنتسوق الآن!', 1);
+(128, 65, 'نحن هنا لدعمك. لنتسوق الآن!', 1),
+(129, 66, 'city', 2),
+(130, 66, 'المدينة', 1),
+(131, 67, 'zone', 2),
+(132, 67, 'المنطقة', 1),
+(133, 68, 'street', 2),
+(134, 68, 'الشارع', 1),
+(135, 69, 'bulid', 2),
+(136, 69, 'اسم/رقم العمارة', 1),
+(137, 70, 'level', 2),
+(138, 70, 'الطابق', 1),
+(139, 71, 'Your Order', 2),
+(140, 71, 'طلبك', 1),
+(141, 73, 'Shipping Address', 2),
+(142, 73, 'عنوان الشحن', 1),
+(143, 74, 'wanted', 2),
+(144, 74, 'طلباتك أوامر', 1),
+(145, 75, 'Register now', 2),
+(146, 75, 'سجل الان', 1),
+(147, 76, 'Login your Account', 2),
+(148, 76, 'تسجيل الدخول إلى حسابك\r\n', 1),
+(149, 77, 'submit', 2),
+(150, 77, 'ارسال', 1),
+(151, 78, 'close', 2),
+(152, 78, 'اغلاق', 1),
+(153, 79, 'Are you looking for a product not found؟', 2),
+(154, 79, 'هل تبحث عن منتج غير موجود ؟', 1),
+(155, 80, 'current password', 2),
+(156, 80, 'كلمة المرور الحالية', 1),
+(157, 81, 'confirm password', 2),
+(158, 81, 'تأكيد كلمة المرور', 1);
 
 -- --------------------------------------------------------
 
@@ -616,17 +699,18 @@ CREATE TABLE `users` (
   `email` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
   `permission` varchar(10) NOT NULL DEFAULT 'user',
-  `phone_number` varchar(60) NOT NULL
+  `phone_number` varchar(60) NOT NULL,
+  `img` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `permission`, `phone_number`) VALUES
-(1, 'محمد الشافعى', 'm@gmail.com', '4297f44b13955235245b2497399d7a93', 'admin', '01090250088'),
-(17, 'محمد الشافعي سليمان', 'engelshafiy6@gmail.com', '9bca81711f05f209f9aa398777565444', 'user', '01090250088'),
-(18, 'Ahmed', 'edsegypt@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', 'user', '01010475455');
+INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `permission`, `phone_number`, `img`) VALUES
+(1, 'محمد الشافعى', 'm@gmail.com', '4297f44b13955235245b2497399d7a93', 'admin', '01090250088', '913489.jpg'),
+(17, 'محمد الشافعي سليمان', 'engelshafiy6@gmail.com', '9bca81711f05f209f9aa398777565444', 'user', '01090250088', NULL),
+(18, 'Ahmed', 'edsegypt@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', 'user', '01010475455', NULL);
 
 -- --------------------------------------------------------
 
@@ -647,6 +731,17 @@ CREATE TABLE `user_settings` (
 INSERT INTO `user_settings` (`id`, `user`, `language`) VALUES
 (2, 1, 'en');
 
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `wanted`
+--
+
+CREATE TABLE `wanted` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -661,6 +756,12 @@ ALTER TABLE `attributes`
 -- Indexes for table `bottom_ads`
 --
 ALTER TABLE `bottom_ads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `brand`
+--
+ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -770,6 +871,12 @@ ALTER TABLE `user_settings`
   ADD KEY `user_settings` (`user`);
 
 --
+-- Indexes for table `wanted`
+--
+ALTER TABLE `wanted`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -777,7 +884,7 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT for table `attributes`
 --
 ALTER TABLE `attributes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `bottom_ads`
@@ -786,10 +893,16 @@ ALTER TABLE `bottom_ads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `brand`
+--
+ALTER TABLE `brand`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -819,13 +932,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -837,7 +950,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `subcategories`
@@ -855,13 +968,13 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `top_ads`
 --
 ALTER TABLE `top_ads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `translation`
 --
 ALTER TABLE `translation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT for table `unit`
@@ -873,13 +986,19 @@ ALTER TABLE `unit`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
 ALTER TABLE `user_settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `wanted`
+--
+ALTER TABLE `wanted`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- قيود الجداول المحفوظة

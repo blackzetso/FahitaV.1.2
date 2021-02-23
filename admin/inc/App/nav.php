@@ -1,12 +1,25 @@
+<?php 
+    $stmt = $con->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$_SESSION['admin']]);
+    $users = $stmt->fetch();
 
-
+    function avatar($img){
+        if(!$img){
+            $avatar = 'default-avatar.jpg';
+        } else {
+            $avatar = $img;
+        }
+        
+        return $avatar;
+    }
+?> 
 	<body class="app ">
 		<div id="spinner"></div>
 		<div id="app" class="page">
 			<div class="main-wrapper page-main" >
 				<nav class="navbar navbar-expand-lg main-navbar">
-					<a class="header-brand" href="index.html">
-						<img src="../img/logo.png" class="header-brand-img" alt="  Asta-Admin  logo">
+					<a class="header-brand" href="index.php">
+						<img src="../img/logo.png" class="header-brand-img" alt="  Asta-Admin logo">
 					</a>
 					<form class="form-inline mr-auto">
 						<ul class="navbar-nav">
@@ -37,11 +50,11 @@
 							</a>
 						</li>
 						<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
-							<img src="assets/img/avatar/avatar-1.jpeg" alt="profile-user" class="rounded-circle w-32">
+							<img src="img/avatar/<?php echo avatar($users['img']); ?>" alt="profile-user" class="rounded-circle w-32">
 							<div class="d-sm-none d-lg-inline-block"><?php echo ucfirst(user($_SESSION['admin'],'full_name')); ?></div></a>
 							<div class="dropdown-menu dropdown-menu-right">
 								 
-								<a href="profile.html" class="dropdown-item has-icon">
+								<a href="admin-setting.php" class="dropdown-item has-icon">
 									<i class="ion ion-gear-a"></i> Settings
 								</a>
 								<a href="logout.php" class="dropdown-item has-icon">

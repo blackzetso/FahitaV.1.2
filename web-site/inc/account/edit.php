@@ -11,7 +11,9 @@
         
         $stmt = $con->prepare("UPDATE users SET full_name = ? , email = ? , phone_number = ?  WHERE id = ?");
         $stmt->execute([$name,$email,$phone,$id]);
-        if($stmt){
-           echo successMessage('تم تحديث بياناتك بنجاح');
-        }
+        if($stmt){ ?>
+            <script>
+                toastr.success('data updated successfully');
+            </script>
+        <?php }
     }

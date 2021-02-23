@@ -13,8 +13,12 @@
     $stmt = $con->prepare("SELECT * FROM top_ads WHERE active = '1' ORDER BY order_number ");
     $stmt->execute();
     $top_ads = $stmt->fetchAll();
+
+    $stmt = $con->prepare("SELECT * FROM brand ");
+    $stmt->execute();
+    $brands = $stmt->fetchAll();
 ?>
-<div class="header-device-mobile">
+<div class="header-device-mobile"> 
     <div class="wapper">
         <div class="item mobile-logo">
             <div class="logo">
@@ -107,10 +111,60 @@
                 </div>
             </div>
         </div>
+        
+         <div class="gnash-product produc-featured rows-space-65">
+            <div class="container">
+                 <form action="filter.php" method="post" >
+                     <div class="row" dir="rtl" > 
+                        <h3 class="custommenu-title-blog">
+                             ابحث بالماركه
+                        </h3> 
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                             <div class="form-group" >
+                                <label>القسم الفرعى</label>
+                                <select id="subCategory" class="form-control" name="subCategory" >
+                                    <option>Select Category first</option> 
+                                </select>
+                             </div>
+                        </div>
+                         
+                         <div class="col-lg-6 col-md-6 col-sm-12">
+                             <div class="form-group" >
+                                <label>القسم</label>
+                                <select id="category" class="form-control" name="category" >
+                                    <?php foreach($cats as $cat){ ?>
+                                    <option value="<?php echo $cat['id']; ?>" ><?php echo $cat['name']; ?></option> 
+                                    <?php } ?>
+                                </select> 
+                             </div>
+                         </div>
+
+                      
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                             <div class="form-group" >
+                                <label>الماركه</label>
+                                <select class="form-control" name="brand" >
+                                    <?php foreach($brands as $brand){ ?>
+                                    <option value="<?php echo $brand['id']; ?>" ><?php echo $brand['name'] ?></option> 
+                                    <?php } ?>
+                                </select>
+                             </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label>.</label>
+                           <div class="form-group" >
+                               <button type="submit" class="btn btn-success btn-block" >بحث</button>
+                            </div>
+                        </div> 
+                     </div>
+                 </form>
+            </div>
+        </div>
+        
         <div class="gnash-product produc-featured rows-space-65">
             <div class="container">
                 <h3 class="custommenu-title-blog">
-                    <?php echo translate('46') ?>
+                    <?php echo translate('46'); ?>
                 </h3>
                 <div class="owl-products owl-slick equal-container nav-center"
                      data-slick='{"autoplay":false, "autoplaySpeed":1000, "arrows":false, "dots":true, "infinite":false, "speed":800, "rows":1}'
@@ -158,6 +212,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="banner-wrapp">
             <div class="container">
                 <div class="row" style="margin-bottom: 30px;">
@@ -442,57 +497,43 @@
     </div>
 </div> 
 <?php include $App . 'footer.php'; ?>
-<a href="#" class="backtotop">
-    <i class="fa fa-angle-double-up"></i>
-</a>
-<script src="assets/js/jquery-1.12.4.min.js"></script>
+
+<!-- Modal --> 
 <script>
-     window.onload = function(){
-
-          window.getinfo = function(urlx,id){
-                $.get(urlx).done(function(data){
-
-                    $(id).html(data);
-                    $(hide).hide();
-                });  
-          }
-        };
-</script>
-<script src="assets/js/jquery.plugin-countdown.min.js"></script>
-<script src="assets/js/jquery-countdown.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-<script src="assets/js/isotope.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/jquery-ui.min.js"></script>
-<script src="assets/js/mobile-menu.js"></script>
-<script src="assets/js/chosen.min.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/jquery.elevateZoom.min.js"></script>
-<script src="assets/js/jquery.actual.min.js"></script>
-<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
-<script src="assets/js/lightbox.min.js"></script>
-<script src="assets/js/owl.thumbs.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/frontend-plugin.js"></script>
-<script src="assets/js/toastr.js" ></script>
-<script> 
-       
-    /*
-        $(document).on('click','.lang',function(event){
-                event.preventDefault(); 
-                var id  = $(this).data('id');
-                $.ajax({
-                    type:'GET',
-                    url:'inc/settings/lang.php',
-                    data:new FormData(this),
-                    contentType:false,
-                    processData:false, 
-                    success:function(data){
-                        $("#Success").html(data);
-                    }
-                }); *.
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?27522';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+  "enabled":true,
+  "chatButtonSetting":{
+      "backgroundColor":"#4dc247",
+      "ctaText":"",
+      "borderRadius":"25",
+      "marginLeft":"0",
+      "marginBottom":"50",
+      "marginRight":"50",
+      "position":"right"
+  },
+  "brandSetting":{
+      "brandName":"مولنا",
+      "brandSubTitle":"Typically replies within a day",
+      "brandImg":"https://macdoos.semi-colen.com/web-site/assets/images/logo.png",
+      "welcomeText":"Hi, there!\nHow can I help you?",
+      "messageText":"Hello, I have a question about {{page_link}}",
+      "backgroundColor":"#0a5f54",
+      "ctaText":"Start Chat",
+      "borderRadius":"25",
+      "autoShow":true,
+      "phoneNumber":"32465261609"
+  }
+};
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
 </script>
 </body>
 </html>

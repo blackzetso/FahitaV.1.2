@@ -67,19 +67,19 @@
         <div id="Success" ></div>
         <form id="add" >
             <div class="item">
-                <input type="text" name="city" required> <label for="">المدينه</label>
+                <input type="text" name="city" required> <label for=""><?php echo translate('66'); ?></label>
             </div>
             <div class="item">
-                <input type="text" name="zone" required> <label for="">اسم المنطقه</label>
+                <input type="text" name="zone" required> <label for=""><?php echo translate('67'); ?></label>
             </div>
             <div class="item">
-                <input type="text" name="street" required> <label for="">اسم الشارع</label>
+                <input type="text" name="street" required> <label for=""><?php echo translate('68'); ?></label>
             </div>
             <div class="item">
-                <input type="text" name="build" required> <label for="">اسم/رقم العماره</label>
+                <input type="text" name="build" required> <label for=""><?php echo translate('69'); ?></label>
             </div>
             <div class="item">
-                <input type="text" name="storey" required> <label for="">رقم الشقه/الطابق</label>
+                <input type="text" name="storey" required> <label for=""><?php echo translate('70'); ?></label>
             </div>
             <!--<div class="time">
                 <h4>وقت استلام الطلب</h4>
@@ -91,7 +91,7 @@
                 </div>
             </div>-->
             <div class="btn-save">
-                <input type="submit"  class="save" value="اتمام الطلب">
+                <input type="submit"  class="save" value="<?php echo translate('26'); ?>">
             </div>
         </form>
     </section>

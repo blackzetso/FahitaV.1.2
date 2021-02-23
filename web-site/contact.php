@@ -367,6 +367,40 @@
     <i class="fa fa-angle-double-up"></i>
 </a>
 <script src="assets/js/jquery-1.12.4.min.js"></script>
+<script>
+     window.onload = function(){
+
+          window.getinfo = function(urlx,id){
+                $.get(urlx).done(function(data){
+
+                    $(id).html(data);
+                    $(hide).hide();
+                });  
+          }
+        };
+    
+     $(document).on('submit','#wantedOrders',function(event){
+            event.preventDefault(); 
+            var Form = $(this);
+            $.ajax({
+                type:'POST',
+                url:'inc/wanted/insert.php',
+                beforeSend:function(){
+                    Form.find("button[type='submit']").prepend('<i class="fas fa-spinner fa-spin"></i>');
+                    Form.find("button[type='submit']").attr('disabled','true');
+                },
+                data:new FormData(this),
+                contentType:false,
+                processData:false, 
+                success:function(data){
+                    $("#wantedSuccess").html(data);
+                },
+                complete:function(data){
+                    $('#wanted').modal('hide');
+                }
+            })
+        });
+</script>
 <script src="assets/js/jquery.plugin-countdown.min.js"></script>
 <script src="assets/js/jquery-countdown.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -386,5 +420,52 @@
 <script src="assets/js/jquery.scrollbar.min.js"></script>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
 <script src="assets/js/frontend-plugin.js"></script>
+<script src="assets/js/toastr.js" ></script>
+<script> 
+        $(document).on('submit','#register',function(event){
+            event.preventDefault(); 
+            var Form = $(this);
+            $.ajax({
+                type:'POST',
+                url:'inc/login/signup.php',
+                beforeSend:function(){
+                    Form.find("button[type='submit']").prepend('<i class="fas fa-spinner fa-spin"></i>');
+                    Form.find("button[type='submit']").attr('disabled','true');
+                },
+                data:new FormData(this),
+                contentType:false,
+                processData:false, 
+                success:function(data){
+                    $("#registerSuccess").html(data);
+                },
+                complete:function(data){
+                    $('.fa-spinner').remove();
+                    Form.find("button[type='submit']").removeAttr('disabled');
+                }
+            })
+        });
+        $(document).on('submit','#login',function(event){
+            event.preventDefault(); 
+            var Form = $(this);
+            $.ajax({
+                type:'POST',
+                url:'inc/login/login.php',
+                beforeSend:function(){
+                    Form.find("button[type='submit']").prepend('<i class="fas fa-spinner fa-spin"></i>');
+                    Form.find("button[type='submit']").attr('disabled','true');
+                },
+                data:new FormData(this),
+                contentType:false,
+                processData:false, 
+                success:function(data){
+                    $("#loginSuccess").html(data);
+                },
+                complete:function(data){
+                    $('.fa-spinner').remove();
+                    Form.find("button[type='submit']").removeAttr('disabled');
+                }
+            })
+        });
+</script>
 </body>
 </html>

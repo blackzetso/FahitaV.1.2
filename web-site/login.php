@@ -7,18 +7,18 @@
 <div class="header-device-mobile">
 		<div class="wapper">
 			<div class="item mobile-logo">
-				<div class="logo">
-					<a href="#">
-						<img src="assets/images/logo.png" alt="img">
-					</a>
-				</div>
+                <div class="logo">
+                    <a href="#">
+                        <img src="assets/images/logo.png" alt="img">
+                    </a>
+                </div>
 			</div>
 			<div class="item item mobile-search-box has-sub">
 				<a href="#">
 						<span class="icon">
 							<i class="fa fa-search" aria-hidden="true"></i>
 						</span>
-				</a>
+				</a> 
 				<div class="block-sub">
 					<a href="#" class="close">
 						<i class="fa fa-times" aria-hidden="true"></i>
@@ -56,40 +56,25 @@
 	</div>
 	<div class="main-content main-content-login">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb-trail breadcrumbs">
-						<ul class="trail-items breadcrumb">
-							<li class="trail-item trail-begin">
-								<a href="index.php"><?php echo translate('1'); ?></a>
-							</li>
-							<li class="trail-item trail-end active">
-								Authentication
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+			 
 			<div class="row">
 				<div class="content-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="site-main">
-						<h3 class="custom_blog_title">
-							Authentication
-						</h3>
+						 
 						<div class="customer_login">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
-										<h5 class="title-login">Login your Account</h5>
+										<h5 class="title-login"><?php echo translate('76') ?></h5>
 										<form id="login" class="login">
 											 
 											<p class="form-row form-row-wide">
-												<label class="text">Username</label>
-												<input title="username" name="email" type="text" class="input-text">
+												<label class="text"><?php echo translate('9') ?></label>
+												<input title="<?php echo translate('9') ?>" name="email" type="text" class="input-text">
 											</p>
 											<p class="form-row form-row-wide">
-												<label class="text">Password</label>
-												<input title="password" name="password" type="password" class="input-text">
+												<label class="text"><?php echo translate('40') ?></label>
+												<input title="<?php echo translate('40') ?>" name="password" type="password" class="input-text">
 											</p>
 											<p class="lost_password">
 												<span class="inline">
@@ -109,7 +94,7 @@
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12">
 									<div class="login-item">
-										<h5 class="title-login">Register now</h5>
+										<h5 class="title-login"><?php echo translate('75') ?></h5>
 										<form id="register" class="register">
                                             <p class="form-row form-row-wide">
 												<label class="text"><?php echo translate('6') ?></label>
@@ -197,6 +182,7 @@
                     }
                 })
             });
+        
             $(document).on('submit','#login',function(event){
                 event.preventDefault(); 
                 var Form = $(this);

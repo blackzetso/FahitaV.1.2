@@ -10,6 +10,10 @@
       $stmt->execute();
       $units = $stmt->fetchAll();
 
+      $stmt = $con->prepare("SELECT * FROM brand ORDER BY id DESC");
+      $stmt->execute();
+      $brands = $stmt->fetchAll();
+
       $stmt = $con->prepare("SELECT * FROM categories ORDER BY id DESC");
       $stmt->execute();
       $cats = $stmt->fetchAll(); 
@@ -110,8 +114,18 @@
                                                         <input type="checkbox" class="form-control text-right" dir="rtl" name="deal" <?php if($row['Deal_Of_Day'] == '1'){ echo 'checked'; } ?> >
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="col-md-12 col-sm-12" >
+                                                 <div class="col-md-6 col-sm-12" >
+                                                    <div class="form-group text-right" >
+                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> الماركه : <span class="text-danger" >*</span></label>
+                                                        <select class="form-control" name="brand" >
+                                                            <option value="0" >اختر الماركه</option>
+                                                            <?php foreach($brands as $brand){ ?>
+                                                            <option value="<?php echo $brand['id'] ?>" ><?php echo $brand['name'] ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
                                                         <label for="recipient-name" class="form-control-label " dir="rtl"> الإتاحه : <span class="text-danger" >*</span></label>
                                                         <select class="form-control" name="Availability" required > 

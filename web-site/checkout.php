@@ -1,6 +1,12 @@
 <?php 
     $title = 'checkout';
     include 'init.php';
+
+    //$coin = $_GET['coin'];
+    //$point = 100;
+
+    //$result = $coin - $point;
+
 ?>
 <div class="header-device-mobile">
     <div class="wapper">
@@ -70,162 +76,84 @@
             </div>
         </div>
         <h3 class="custom_blog_title">
-            Checkout
+            <?php echo translate('56'); ?>
         </h3>
         <div class="checkout-wrapp">
             <div class="shipping-address-form-wrapp">
                 <div class="shipping-address-form  checkout-form">
-                    <div class="row-col-1 row-col">
-                        <div class="shipping-address">
-                            <h3 class="title-form">
-                                Shipping Address
-                            </h3>
-                            <p class="form-row form-row-first">
-                                <label class="text">First name</label>
-                                <input title="first" type="text" class="input-text">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <label class="text">Last name</label>
-                                <input title="last" type="text" class="input-text">
-                            </p>
-                            <p class="form-row forn-row-col forn-row-col-1">
-                                <label class="text">Country</label>
-                                <select title="country" data-placeholder="United Kingdom" class="chosen-select"
-                                        tabindex="1">
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                                    <option value="Aland Islands">Aland Islands</option>
-                                    <option value="Albania">Albania</option>
-                                    <option value="Algeria">Algeria</option>
-                                    <option value="American Samoa">American Samoa</option>
-                                    <option value="Andorra">Andorra</option>
-                                    <option value="Angola">Angola</option>
-                                    <option value="Anguilla">Anguilla</option>
-                                    <option value="Antarctica">Antarctica</option>
-                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Armenia">Armenia</option>
-                                    <option value="Aruba">Aruba</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Austria">Austria</option>
-                                    <option value="Azerbaijan">Azerbaijan</option>
-                                    <option value="Bahamas">Bahamas</option>
-                                    <option value="Bahrain">Bahrain</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Barbados">Barbados</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Belgium">Belgium</option>
-                                    <option value="Belize">Belize</option>
-                                    <option value="Benin">Benin</option>
-                                    <option value="Bermuda">Bermuda</option>
-                                    <option value="Bhutan">Bhutan</option>
-                                </select>
-                            </p>
-                            <p class="form-row forn-row-col forn-row-col-2">
-                                <label class="text">State</label>
-                                <select title="state" data-placeholder="London" class="chosen-select" tabindex="1">
-                                    <option value="United States">London</option>
-                                    <option value="United Kingdom">tokyo</option>
-                                    <option value="Afghanistan">Seoul</option>
-                                    <option value="Aland Islands">Mexico city</option>
-                                    <option value="Albania">Mumbai</option>
-                                    <option value="Algeria">Delhi</option>
-                                    <option value="American Samoa">New York</option>
-                                    <option value="Andorra">Jakarta</option>
-                                    <option value="Angola">Sao Paulo</option>
-                                    <option value="Anguilla">Osaka</option>
-                                    <option value="Antarctica">Karachi</option>
-                                    <option value="Antigua and Barbuda">Matx-cơ-va</option>
-                                    <option value="Argentina">Toronto</option>
-                                    <option value="Armenia">Boston</option>
-                                </select>
-                            </p>
-                            <p class="form-row forn-row-col forn-row-col-3">
-                                <label class="text">City</label>
-                                <select title="city" data-placeholder="London" class="chosen-select" tabindex="1">
-                                    <option value="United States">London</option>
-                                    <option value="United Kingdom">tokyo</option>
-                                    <option value="Afghanistan">Seoul</option>
-                                    <option value="Aland Islands">Mexico city</option>
-                                    <option value="Albania">Mumbai</option>
-                                    <option value="Algeria">Delhi</option>
-                                    <option value="American Samoa">New York</option>
-                                    <option value="Andorra">Jakarta</option>
-                                    <option value="Angola">Sao Paulo</option>
-                                    <option value="Anguilla">Osaka</option>
-                                    <option value="Antarctica">Karachi</option>
-                                    <option value="Antigua and Barbuda">Matx-cơ-va</option>
-                                    <option value="Argentina">Toronto</option>
-                                    <option value="Armenia">Boston</option>
-                                </select>
-                            </p>
-                            <p class="form-row form-row-first">
-                                <label class="text">Zip code</label>
-                                <input title="zip" type="text" class="input-text">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <label class="text">Address</label>
-                                <input title="address" type="text" class="input-text">
-                            </p>
+                    <form id="checkout" >
+                        <div class="row-col-1 row-col">
+                            <div class="shipping-address">
+                                <h3 class="title-form">
+                                    <?php echo translate('73'); ?>
+                                </h3>
+                                <p class="form-row form-row-first">
+                                    <label class="text"> <?php echo translate('66'); ?> </label>
+                                    <input title="<?php echo translate('66'); ?>" name="city" type="text" class="input-text">
+                                </p>
+                                <p class="form-row form-row-last">
+                                    <label class="text"> <?php echo translate('67'); ?> </label>
+                                    <input title="<?php echo translate('67'); ?>" name="zone" type="text" class="input-text">
+                                </p>
+                                <p class="form-row form-row-first">
+                                    <label class="text"><?php echo translate('68'); ?></label>
+                                    <input title="<?php echo translate('68'); ?>" name="street" type="text" class="input-text">
+                                </p>
+                                <p class="form-row form-row-last">
+                                    <label class="text"><?php echo translate('69'); ?></label>
+                                    <input title="<?php echo translate('69'); ?>" name="build" type="text" class="input-text">
+                                </p>
+                                <p class="form-row form-row-last" style="width: 100%;">
+                                    <label class="text"><?php echo translate('70'); ?></label>
+                                    <input title="<?php echo translate('70'); ?>" name="storey" type="text" class="input-text">
+                                </p>
+                                <button type="submit" class="button btn-return" > <?php echo translate('26'); ?> </button>
+                                <p id="Success" class="form-row form-row-last" style="width: 100%;"></p>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row-col-2 row-col">
                         <div class="your-order">
                             <h3 class="title-form">
-                                Your Order
+                                <?php echo translate('71'); ?>
                             </h3>
                             <ul class="list-product-order">
+                                <?php foreach($items as $item){ 
+                                        $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
+                                        $stmt->execute([$item['product']]);
+                                        $product = $stmt->fetch(); ?>
                                 <li class="product-item-order">
                                     <div class="product-thumb">
                                         <a href="#">
-                                            <img src="assets/images/item-order1.jpg" alt="img">
+                                            <img src="../img/products/<?php echo $product['img'] ?>" alt="img">
                                         </a>
                                     </div>
                                     <div class="product-order-inner">
                                         <h5 class="product-name">
-                                            <a href="#">3D Soybeans Chair</a>
-                                        </h5>
-                                        <span class="attributes-select attributes-color">Black,</span>
-                                        <span class="attributes-select attributes-size">XXL</span>
+                                            <a href="productdetails.php?id=<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a>
+                                        </h5> 
                                         <div class="price">
-                                            $45
-                                            <span class="count">x1</span>
+                                            $<?php echo $item['price'] ?>
+                                            <span class="count">x<?php echo $item['qty'] ?></span>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="product-item-order">
-                                    <div class="product-thumb">
-                                        <a href="#">
-                                            <img src="assets/images/item-order2.jpg" alt="img">
-                                        </a>
-                                    </div>
-                                    <div class="product-order-inner">
-                                        <h5 class="product-name">
-                                            <a href="#">3D Soybeans Chair</a>
-                                        </h5>
-                                        <span class="attributes-select attributes-color">Black,</span>
-                                        <span class="attributes-select attributes-size">XXL</span>
-                                        <div class="price">
-                                            $45
-                                            <span class="count">x1</span>
-                                        </div>
-                                    </div>
-                                </li>
+                                <?php } ?>
                             </ul>
                             <div class="order-total">
 									<span class="title">
-										Total Price:
+										<?php echo translate('20'); ?> :
 									</span>
                                 <span class="total-price">
-										$95
+										$<?php echo $total; ?>
 									</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="button button-payment">Payment</a>
+               <!-- <a href="#" class="button button-payment">Payment</a> -->
             </div>
+            <!--
             <div class="payment-method-wrapp">
                 <div class="payment-method-form checkout-form">
                     <div class="row-col-1 row-col">
@@ -349,197 +277,57 @@
                     <a href="#" class="button btn-pay-now">Pay now</a>
                 </div>
             </div>
-            <div class="end-checkout-wrapp">
-                <div class="end-checkout checkout-form">
-                    <div class="icon">
-                    </div>
-                    <h3 class="title-checkend">
-                        Congratulation! Your order has been processed.
-                    </h3>
-                    <div class="sub-title">
-                        Aenean dui mi, tempus non volutpat eget, molestie a orci.
-                        Nullam eget sem et eros laoreet rutrum.
-                        Quisque sem ante, feugiat quis lorem in.
-                    </div>
-                    <a href="#" class="button btn-return">Return to Store</a>
-                </div>
-            </div>
+            -->
+           
         </div>
     </div>
 </div>
-<footer class="footer style7">
-    <div class="container">
-        <div class="container-wapper">
-            <div class="row">
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-sm hidden-md hidden-lg">
-                    <div class="gnash-newsletter style1">
-                        <div class="newsletter-head">
-                            <h3 class="title">Newsletter</h3>
-                        </div>
-                        <div class="newsletter-form-wrap">
-                            <div class="list">
-                                Sign up for our free video course and <br/> urban garden inspiration
-                            </div>
-                            <input type="email" class="input-text email email-newsletter"
-                                   placeholder="Your email letter">
-                            <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="gnash-custommenu default">
-                        <h2 class="widgettitle">Quick Menu</h2>
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="#">New arrivals</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Life style</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Pumpkin</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Leafy green</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Soybeans</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs">
-                    <div class="gnash-newsletter style1">
-                        <div class="newsletter-head">
-                            <h3 class="title">Newsletter</h3>
-                        </div>
-                        <div class="newsletter-form-wrap">
-                            <div class="list">
-                                Sign up for our free video course and <br/> urban garden inspiration
-                            </div>
-                            <input type="email" class="input-text email email-newsletter"
-                                   placeholder="Your email letter">
-                            <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="gnash-custommenu default">
-                        <h2 class="widgettitle">Information</h2>
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="#">FAQs</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Track Order</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Delivery</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Contact Us</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Return</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-end">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <div class="gnash-socials">
-                            <ul class="socials">
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="coppyright">
-                            Copyright © 2020
-                            <a href="#">Gnash</a>
-                            . All rights reserved
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<div class="footer-device-mobile">
-    <div class="wapper">
-        <div class="footer-device-mobile-item device-home">
-            <a href="index.html">
-					<span class="icon">
-						<i class="fa fa-home" aria-hidden="true"></i>
-					</span>
-                Home
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-wishlist">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-heart" aria-hidden="true"></i>
-					</span>
-                Wishlist
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-cart">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-shopping-basket" aria-hidden="true"></i>
-						<span class="count-icon">
-							0
-						</span>
-					</span>
-                <span class="text">Cart</span>
-            </a>
-        </div>
-        <div class="footer-device-mobile-item device-home device-user">
-            <a href="#">
-					<span class="icon">
-						<i class="fa fa-user" aria-hidden="true"></i>
-					</span>
-                Account
-            </a>
-        </div>
-    </div>
-</div>
-<a href="#" class="backtotop">
-    <i class="fa fa-angle-double-up"></i>
-</a>
+<?php 
+    include $App . 'footer.php';
+?>
+
 <script src="assets/js/jquery-1.12.4.min.js"></script>
-<script src="assets/js/jquery.plugin-countdown.min.js"></script>
-<script src="assets/js/jquery-countdown.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/magnific-popup.min.js"></script>
-<script src="assets/js/isotope.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src="assets/js/jquery-ui.min.js"></script>
-<script src="assets/js/mobile-menu.js"></script>
-<script src="assets/js/chosen.min.js"></script>
-<script src="assets/js/slick.js"></script>
-<script src="assets/js/jquery.elevateZoom.min.js"></script>
-<script src="assets/js/jquery.actual.min.js"></script>
-<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
-<script src="assets/js/lightbox.min.js"></script>
-<script src="assets/js/owl.thumbs.min.js"></script>
-<script src="assets/js/jquery.scrollbar.min.js"></script>
-<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
-<script src="assets/js/frontend-plugin.js"></script>
-</body>
+<script>
+     $(document).on('submit','#checkout',function(event){
+            event.preventDefault(); 
+            var Form = $(this);
+            $.ajax({
+                type:'POST',
+                url:'inc/checkout/insert.php',
+                beforeSend:function(){
+                    Form.find("button[type='submit']").prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+                    Form.find("button[type='submit']").attr('disabled','true');
+                },
+                data:new FormData(this),
+                contentType:false,
+                processData:false, 
+                success:function(data){
+                    $("#Success").html(data);
+                },
+                complete:function(data){
+                    $('.spinner-border').remove();
+                    Form.find("button[type='submit']").removeAttr('disabled');
+                }
+            })
+        });
+</script>
+        <script src="assets/js/jquery.plugin-countdown.min.js"></script>
+        <script src="assets/js/jquery-countdown.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/magnific-popup.min.js"></script>
+        <script src="assets/js/isotope.min.js"></script>
+        <script src="assets/js/jquery.scrollbar.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <script src="assets/js/mobile-menu.js"></script>
+        <script src="assets/js/chosen.min.js"></script>
+        <script src="assets/js/slick.js"></script>
+        <script src="assets/js/jquery.elevateZoom.min.js"></script>
+        <script src="assets/js/jquery.actual.min.js"></script>
+        <script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
+        <script src="assets/js/lightbox.min.js"></script>
+        <script src="assets/js/owl.thumbs.min.js"></script>
+        <script src="assets/js/jquery.scrollbar.min.js"></script>
+        <script src="assets/js/frontend-plugin.js"></script>
+    </body>
 </html>

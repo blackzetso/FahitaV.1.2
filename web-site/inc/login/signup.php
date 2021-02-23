@@ -28,24 +28,30 @@
         $Errors[] = 'password must be more than 5 characters';
     } 
 
+    $stmt = $con->prepare("SELECT * FROM settings ");
+    $stmt->execute();
+    $settings = $stmt->fetch();
+
     $Count  = getRowCount('users','email',$email); 
 
     if($Count > 0){
         echo errorMessage('هذا الحساب مسجل من قبل');
     } else { 
-        if(empty($Errors)){ 
-            $stmt = $con->prepare("INSERT INTO `users` 
-                                   ( `full_name`,`email`, `password`,`phone_number`) 
-                                  VALUES 
-                                   (?,?,?,?)");
-            $stmt->execute([$fname,$email,$hashed,$phone]);
-            
-            $_SESSION['id'] = getColumn('id','users','email',$email);
-            redirect('index.php');
-        }else{
-            foreach($Errors as $error){
-                echo errorMessage($error);
-            }
-        } 
+        
+            if(empty($Errors)){ 
+                $stmt = $con->prepare("INSERT INTO `users` 
+                                       ( `full_name`,`email`, `password`,`phone_number`) 
+                                      VALUES 
+                                       (?,?,?,?)");
+                $stmt->execute([$fname,$email,$hashed,$phone]);
+                if($settings['users_auto_approved'] == '0'){
+                    $_SESSION['id'] = getColumn('id','users','email',$email);
+                    redirect('index.php');
+                }else{ echo successMessage('تم إنشاء حسابك بنجاح وبإنتظار التفعيل من قبل الإدارة'); }
+            }else{ 
+                foreach($Errors as $error){
+                    echo errorMessage($error);
+                }
+            }  
     }
      

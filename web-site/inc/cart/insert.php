@@ -4,7 +4,11 @@
  
     if(isset($_SESSION['id'])){
     $user       = $_SESSION['id']; 
-    $product_id = $_GET['id']; 
+    if(isset($_GET['id'])){
+        $product_id = $_GET['id'];
+    }else{
+        $product_id = $_POST['id'];
+    }
     
     $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
     $stmt->execute([$product_id]);
@@ -12,7 +16,7 @@
         
     $price = $product['price'];
     $name  = $product['name'];
-    $qty   = 1; 
+    $qty   = isset($_POST['qty']) ? $_POST['qty'] : 1; 
     $total = $price * $qty; 
  
     $stmt = $con->prepare("SELECT id,qty FROM cart WHERE user = ? AND product = ?");

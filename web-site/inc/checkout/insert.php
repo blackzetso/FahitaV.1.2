@@ -14,8 +14,8 @@
     $street    = filter_var($_POST['street'],FILTER_SANITIZE_STRING);
     $build     = filter_var($_POST['build'],FILTER_SANITIZE_STRING);
     $storey    = filter_var($_POST['storey'],FILTER_SANITIZE_STRING);
-    $time_from = $_POST['time_from'];
-    $time_to   = $_POST['time_to'];
+    //$time_from = $_POST['time_from'];
+    //$time_to   = $_POST['time_to'];
 
     
 
@@ -36,19 +36,19 @@
     if(!$storey){
         $Errors[] = 'يجب ملئ حقل رقم الطابق';
     }
-    if(!$time_from){
-        $Errors[] = 'يجب تحديد وقت استلام الطلب';
-    }
-    if(!$time_to){
-        $Errors[] = 'يجب تحديد وقت استلام الطلب';
-    }
+    //if(!$time_from){
+    //    $Errors[] = 'يجب تحديد وقت استلام الطلب';
+    //}
+    //if(!$time_to){
+    //    $Errors[] = 'يجب تحديد وقت استلام الطلب';
+    //}
                            
     if(empty($Errors)){
         if($Count > 0){
-            $stmt = $con->prepare("INSERT INTO `orders` ( `city`, `zone`, `street`, `build`, `storey`, `user`, `time_from`, `time_to`,`date`) 
+            $stmt = $con->prepare("INSERT INTO `orders` ( `city`, `zone`, `street`, `build`, `storey`, `user`,`date`) 
                                             VALUES 
-                                                        (?,?,?,?,?,?,?,?,now())");
-            $stmt->execute([$city,$zone,$street,$build,$storey,$user,$time_from,$time_to]);
+                                                        (?,?,?,?,?,?,now())");
+            $stmt->execute([$city,$zone,$street,$build,$storey,$user]);
 
             if($stmt){
                 

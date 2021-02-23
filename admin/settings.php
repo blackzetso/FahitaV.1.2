@@ -4,7 +4,11 @@
 
       $stmt = $con->prepare("SELECT * FROM settings  ");
       $stmt->execute([$id]);
-      $row = $stmt->fetch(); ; ?>
+      $row = $stmt->fetch(); 
+
+     
+    
+?>
 
 				<div class="app-content">
 					<section class="section">
@@ -24,13 +28,23 @@
                                         
                                         <form id="edit" >
                                             <div class="row text-right" dir="rtl" >  
+                                                
                                                 <div class="col-md-12 col-sm-12" >
                                                     <div class="form-group text-right" >
                                                         <label for="recipient-name" class="form-control-label " dir="rtl"> سعر التوصيل : <span class="text-danger" >*</span></label>
                                                         <input type="number" class="form-control text-right" value="<?php echo $row['shipping_cost'] ?>" dir="rtl" name="shipping_cost"required > 
                                                     </div>
                                                 </div>
-                                           
+                                                <div class="col-md-12 col-sm-12" >
+                                                    <div class="form-group" >
+                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> الموافقه التلقائيه للأعضاء : <span class="text-danger" >*</span></label>
+                                                        <select name="users_auto_approved" class="form-control" >
+                                                            <option <?php if($row['users_auto_approved'] == "0"){ echo 'slected'; } ?> value="0" >الموافقه التلقائية</option>
+                                                            <option <?php if($row['users_auto_approved'] == "1"){ echo 'slected'; } ?> value="1" > مراجعة الأعضاء أولا </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
                                             </div> 
 
                                             <div class="form-group text-right" >

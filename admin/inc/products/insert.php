@@ -14,6 +14,7 @@
     $subCat = $_POST['subCat'];
     $short_desc = 'empty';
     $description = 'empty';
+    $brand  = $_POST['brand'];
 
     //$feature = $_POST['feature'];
     //$bestSeller = $_POST['bestSeller'];
@@ -51,10 +52,10 @@
             $neName   = rand(0,10000000) .'.' . $Extension;
             move_uploaded_file($tmp ,'../../../img/products/' . $neName);
             
-            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`) 
+            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`,`brand`) 
                                                     VALUES 
-                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal]);
+                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand]);
 
         if($stmt){
             echo successMessage('تم إضافة منتج جديد');

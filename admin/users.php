@@ -1,8 +1,12 @@
 <?php include 'init.php'; 
      
-      $stmt = $con->prepare("SELECT * FROM users ORDER BY id DESC");
+      $stmt = $con->prepare("SELECT * FROM users WHERE permission = 'user' ORDER BY id DESC");
       $stmt->execute();
       $rows = $stmt->fetchAll();
+
+      $stmt = $con->prepare("SELECT * FROM settings ");
+      $stmt->execute();
+      $setting = $stmt->fetch();
  ?>
 
 				<div class="app-content">
@@ -28,6 +32,8 @@
 														<th class="wd-15p"> الأسم </th> 
                                                         <th class="wd-15p"> الإيميل </th>
                                                         <th class="wd-15p"> رقم الهاتف </th>
+                                                        <th class="wd-15p"> طلبات العميل </th>
+                                                        <th class="wd-15p"> تفعيل الحسابات </th>
                                                         <th class="wd-15p"><i class="fa fa-cog" ></i> </th> 
 													</tr>
 												</thead>
@@ -37,7 +43,21 @@
                                                         <td><?php echo $cat['full_name']; ?></td>
 														<td><?php echo $cat['email']; ?></td>
                                                         <td><?php echo $cat['phone_number']; ?></td>
+                                                        <td>
+                                                            <a href="userOrders.php?id=<?php echo $cat['id']; ?>" class="btn btn-info" > <i class="ti-pencil-alt" ></i> </a>
+                                                        </td>
+                                                        <th id="id<?php echo $cat['id'] ?>" class="wd-15p"> 
+                                                            <?php if($setting['users_auto_approved'] == '1'){ 
+                                                                if($cat['approve'] == '0'){ ?>
+                                                             <a href="javascript:void(0)" onclick="getinfo('inc/users/approve.php?id=<?php echo $cat['id'] ?>','#id<?php echo $cat['id'] ?>')" class="btn btn-success" ><i class="fa fa-check" ></i> </a>
+                                                             <?php }else{ ?>
+                                                                    <i class="fa fa-check text-success" ></i>
+                                                             <?php } }else{ ?> 
+                                                                <span class="text-success">تم تفعيل الموافقة التلقائية</span>
+                                                            <?php } ?>
+                                                        </th>
  														<th class="wd-15p"> 
+                                                             
                                                              <a href="javascript:void(0)" class="btn btn-danger delete" data-toggle="modal" data-target="#item" data-id="<?php echo $cat['id']; ?>" ><i class="fa fa-trash" ></i> </a>
                                                         </th> 
 													</tr> 
@@ -116,31 +136,39 @@
 			$(function(e) {
 				$('#example').DataTable();
 			} );
-		</script>
-        <script > 
-                $(document).on('click','.delete',function(e){
-                   e.preventDefault();
-                   var id  = $(this).data('id');
-                   $("#item .del-btn").attr('data-id',id);
-                   $("#item .hidden-input").attr('value',id);
-                });
+		 
+            window.onload = function(){ 
+              window.getinfo = function(urlx,id){
+                $.get(urlx).done(function(data){ 
+                    $(id).html(data);
+                    $(hide).hide();
+                });  
+              }
+            };
+            
+            $(document).on('click','.delete',function(e){
+               e.preventDefault();
+               var id  = $(this).data('id');
+               $("#item .del-btn").attr('data-id',id);
+               $("#item .hidden-input").attr('value',id);
+            });
 
-                $(document).on('submit','#delForm',function(e){
-                   e.preventDefault();
-                    var idd = $('#item .del-btn').data('id');
-                   $.ajax({
-                       type: 'POST',
-                       url: 'inc/users/delete.php',
-                       data: new FormData(this),
-                       contentType: false,
-                       cache: false,
-                       processData:false,
-                       success:function(data){
-                           //$('#success').html(data);
-                           $('.delete[data-id='+ idd +']').parent().parent().remove();
-                       }
-                   })
-                });
+            $(document).on('submit','#delForm',function(e){
+               e.preventDefault();
+                var idd = $('#item .del-btn').data('id');
+               $.ajax({
+                   type: 'POST',
+                   url: 'inc/users/delete.php',
+                   data: new FormData(this),
+                   contentType: false,
+                   cache: false,
+                   processData:false,
+                   success:function(data){
+                       //$('#success').html(data);
+                       $('.delete[data-id='+ idd +']').parent().parent().remove();
+                   }
+               })
+            });
              
             </script>
 

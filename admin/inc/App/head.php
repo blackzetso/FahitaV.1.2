@@ -34,5 +34,6 @@
         <!-- Bootstrap-Iconpicker -->
         <link rel="stylesheet" href="assets/plugins/icon-picker/bootstrap-iconpicker.min.css"  > 
         <link rel="stylesheet" href="assets/plugins/toastr/build/toastr.css"  >  
-        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
 	</head>
