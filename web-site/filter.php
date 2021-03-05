@@ -3,16 +3,16 @@
     include 'init.php';
  
     if($_SERVER['REQUEST_METHOD'] == "POST"){   
-        $subCategory = $_POST['subCategory'];
-        $category    = $_POST['category'];
-        $brand       = $_POST['brand'];
-        
-        $stmt = $con->prepare("SELECT * FROM products WHERE category = ? AND subcategory = ? AND brand = ? ");
+        $search      = isset($_POST['search'])      && is_string($_POST['search'])        ? strval($_POST['search'])  : '' ;
+        $subCategory = isset($_POST['subCategory']) && is_numeric($_POST['subCategory'])  ? intval($_POST['subCategory']) : 0 ; 
+        $category    = isset($_POST['category'])    && is_numeric($_POST['category'])     ? intval($_POST['category']) : 0 ; 
+        $brand       = isset($_POST['brand'])       && is_numeric($_POST['brand'])        ? intval($_POST['brand']) : null ; 
+                             
+        $stmt = $con->prepare ("SELECT * FROM `products` WHERE (CONVERT(`name` USING utf8) LIKE '%$search%') AND category = ? AND subcategory = ? AND brand = ? ");
         $stmt->execute([$category,$subCategory,$brand]);
         $rows = $stmt->fetchAll();
-        $Count = $stmt->rowCount(); }
-  
-?>
+        $Count = $stmt->rowCount(); 
+    } ?>
 	<div class="header-device-mobile">
 		<div class="wapper">
 			<div class="item mobile-logo">

@@ -1,6 +1,6 @@
 <?php include 'init.php'; 
      
-      $stmt = $con->prepare("SELECT * FROM categories ORDER BY id DESC");
+      $stmt = $con->prepare("SELECT * FROM language ORDER BY id DESC");
       $stmt->execute();
       $cats = $stmt->fetchAll(); ?>
 
@@ -8,19 +8,19 @@
 					<section class="section">
                     	<ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">إدارة الأقسام</li>				 
+                            <li class="breadcrumb-item active" aria-current="page">إدارة اللغات</li>				 
                         </ol>
 
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="card">
 									<div class="card-header">
-										<h4> الأقسام الرئيسية </h4>
+										<h4> اللغات </h4>
 									</div>
 									<div class="card-body">
                                         <div class="row" dir="rtl" >
                                             <div class="col-lg-4 text-right" >
-                                                <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addCategory" >اضافة قسم</button>
+                                                <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addCategory" > اضافة لغة <i class="fa fa-plus" ></i>   </button>
                                             </div>
                                         </div>
 										<div class="table-responsive">
@@ -28,30 +28,29 @@
 											<table id="example" class="table table-striped text-center table-bordered border-t0 w-100 text-nowrap">
 												<thead>
 													<tr>
-														<th class="wd-15p">#ID</th>
-                                                        <th class="wd-15p"> صورة </th>
-														<th class="wd-15p"> الأسم </th>
-														<th class="wd-20p"> الأقسام الفرعيه </th>
+														<th class="wd-15p">#ID</th> 
+														<th class="wd-15p"> اللغه </th> 
+                                                        <th class="wd-15p"> الرمز </th>
+                                                        <th class="wd-15p"> الترجمة </th>
                                                         <th class="wd-15p"><i class="fa fa-cog" ></i> </th> 
 													</tr>
 												</thead>
 												<tbody>
                                                     <?php foreach($cats as $cat) { ?>
 													<tr>
-														<td><?php echo $cat['id']; ?></td>
-                                                        <td>
-                                                            <img height="50px" width="50px" src="../img/categories/<?php echo $cat['img']; ?>" >
-                                                        </td>
+														<td><?php echo $cat['id']; ?></td> 
 														<td><?php echo $cat['name']; ?></td>
-														<td><?php echo getRowCount('subcategories','category',$cat['id']); ?></td>
-														<th class="wd-15p"> 
-                                                            <a href="subcategories.php?id=<?php echo $cat['id']; ?>" class="btn btn-info" >الأقسام الفرعيه</a>
-                                                            <a href="category-edit.php?id=<?php echo $cat['id']; ?>" class="btn btn-success" ><i class="fa fa-edit" ></i> </a>
-                                                            <a href="javascript:void(0)" class="btn btn-danger delete" data-toggle="modal" data-target="#item" data-id="<?php echo $cat['id']; ?>" ><i class="fa fa-trash" ></i> </a>
+                                                        <td><?php echo $cat['code']; ?></td>
+                                                        <th class="wd-15p"> 
+                                                            <a href="translate.php?id=<?php echo $cat['id'] ?>" class="btn btn-info" ><i class="fas fa-language"></i> الترجمة</a> 
+                                                        </th>
+ 														<th class="wd-15p"> 
+                                                            <a href="lang-edit.php?id=<?php echo $cat['id'] ?>" class="btn btn-success" >تعديل</a>
+                                                            <a href="javascript:void(0)" class="btn btn-danger" >حذف</a>
                                                         </th> 
 													</tr> 
                                                     <?php } ?>
-												</tbody> 
+												</tbody>
 											</table>
 										</div>
 									</div>
@@ -60,43 +59,20 @@
 						</div>
 					</section>
 				</div>
-                <div id="item" class="modal fade">
-					<div class="modal-dialog modal-sm" role="document">
-						<form id="delForm" >
-                            <div class="modal-content ">  
-                                <div class="modal-body text-right" dir="rtl">
-                                     <p class="mb-0">هل أنت متأكد من حذف هذا القسم ؟</p>
-                                </div><!-- modal-body -->
-                                <div class="modal-footer"> 
-                                    <input type="hidden" class="hidden-input" name="id" value="" >
-                                    <button type="submit" class="btn btn-default del-btn" data-id="" onclick="$('#item').modal('hide');"> نعم </button>
-                                    <button type="button" class="btn btn-light" data-dismiss="modal"> لا </button>
-                                </div> 
-                            </div>
-                        </form> 
-					</div> 
-				</div>
+                
                 <!-- Message Modal -->
 				<div class="modal fade" id="addCategory" tabindex="-1" role="dialog"  aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 				            <form id="add" enctype="multipart/form-data">
-                                <div class="modal-body" dir="rtl"> 
+                                <div class="modal-body"> 
                                     <div class="form-group text-right" >
-                                        <label for="recipient-name" class="form-control-label " dir="rtl"> اسم القسم :</label>
+                                        <label for="recipient-name" class="form-control-label " dir="rtl"> اسم اللغه :</label>
                                         <input type="text" class="form-control text-right" dir="rtl" name="name">
                                     </div> 
                                     <div class="form-group text-right" >
-                                        <label for="recipient-name" class="form-control-label " dir="rtl"> رقم الترتيب :</label>
-                                        <input type="number" class="form-control text-right" dir="rtl" name="Order" value="1">
-                                    </div> 
-                                    <div class="form-group text-right" >
-                                        <label for="recipient-name" class="form-control-label " dir="rtl">  الظهور فى القائمة  :</label>
-                                        <input type="checkbox" class="form-control text-right" dir="rtl" name="view">
-                                    </div> 
-                                    <div class="form-group files text-right">
-                                        <label for="recipient-name" class="form-control-label " dir="rtl"> صورة القسم :</label>
-                                        <input type="file" class="form-control1" name="img" >
+                                        <label for="recipient-name" class="form-control-label " dir="rtl"> رمز اللغه :</label>
+                                        <input type="text" class="form-control text-right" dir="rtl" name="code" placeholder="مثال : en , ar">
                                     </div> 
                                 </div>
                                 <div class="modal-footer">
@@ -156,36 +132,12 @@
 			} );
 		</script>
         <script > 
-                $(document).on('click','.delete',function(e){
-                   e.preventDefault();
-                   var id  = $(this).data('id');
-                   $("#item .del-btn").attr('data-id',id);
-                   $("#item .hidden-input").attr('value',id);
-                });
-
-                $(document).on('submit','#delForm',function(e){
-                   e.preventDefault();
-                    var idd = $('#item .del-btn').data('id');
-                   $.ajax({
-                       type: 'POST',
-                       url: 'inc/categories/delete.php',
-                       data: new FormData(this),
-                       contentType: false,
-                       cache: false,
-                       processData:false,
-                       success:function(data){
-                           //$('#success').html(data);
-                           $('.delete[data-id='+ idd +']').parent().parent().remove();
-                       }
-                   })
-                }); 
-            
                 $(document).on('submit','#add',function(event){
                     event.preventDefault(); 
                     var Form = $(this);
                     $.ajax({
                         type:'POST',
-                        url:'inc/categories/insert.php',
+                        url:'inc/lang/insert.php',
                         beforeSend:function(){
                             Form.find("button[type='submit']").prepend('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
                             Form.find("button[type='submit']").attr('disabled','true');

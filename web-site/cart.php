@@ -115,10 +115,10 @@
                                         <td class="product-quantity" data-title="Quantity">
                                             <div class="quantity">
                                                 <div class="control">
-                                                   <!-- <a class="btn-number qtyminus quantity-minus" href="#">-</a> -->
+                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>  
                                                     <input type="text" data-step="1" data-min="0" value="<?php echo $item['qty']; ?>" title="Qty"
                                                            class="input-qty qty" size="4" disabled>
-                                                   <!-- <a href="#" class="btn-number qtyplus quantity-plus">+</a> -->
+                                                     <a href="#" class="btn-number qtyplus quantity-plus">+</a>
                                                 </div>
                                             </div>
                                         </td>

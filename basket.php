@@ -57,10 +57,10 @@
             //} ?>
         <div class="order-item" >
             <div class="img-order">
-                <img src="img/products/<?php echo getColumn('img','products','id',$row['product']); ?>" alt="">
+                <img style="height:" src="img/products/<?php echo getColumn('img','products','id',$row['product']); ?>" alt="">
             </div>
             <div class="info-order">
-                <div class="name title"><?php echo getColumn('name','products','id',$row['product']); ?></div>
+                <div class="name title"><?php echo mb_substr(getColumn('name','products','id',$row['product']),0,14,'UTF-8'); ?></div>
                 <div class="salary-order prag"><span class="salary"><?php echo getColumn('price','products','id',$row['product'])-getColumn('discount','products','id',$row['product']); ?></span> <span>ج</span></div>
             </div>
             <div class="info-order">

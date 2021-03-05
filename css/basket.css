@@ -103,6 +103,8 @@
       width: 80px;
       border: 1px solid #7dc916;
       height: 100%;
+      height: 40px;
+      width: 40px;
   }
   .orders .order-item .img-order img{
       width: 100%;

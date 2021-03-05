@@ -28,7 +28,8 @@
 		<!--Chartist css-->
 		<link rel="stylesheet" href="assets/plugins/chartist/chartist.css">
 		<link rel="stylesheet" href="assets/plugins/chartist/chartist-plugin-tooltip.css">
-
+        <!-- Ck Editor 4.14 -->
+        <script src="https://cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script> 
 		<!--Full calendar css--> 
 		<link rel="stylesheet" href="assets/plugins/fullcalendar/stylesheet1.css">
         <!-- Bootstrap-Iconpicker -->

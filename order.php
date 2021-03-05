@@ -57,7 +57,6 @@
             </div> 
         <?php } } ?>
     </section>
-
     <script src="./js/main.js"></script>
     <script src="./js/all.min.js"></script>
 </body>

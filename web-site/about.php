@@ -5,68 +5,22 @@
     $stmt = $con->prepare("SELECT * FROM team");
     $stmt->execute();
     $team = $stmt->fetchAll();
+
+    $stmt = $con->prepare("SELECT about FROM about");
+    $stmt->execute();
+    $about = $stmt->fetch();
 ?>
-<div class="header-device-mobile">
-    <div class="wapper">
-        <div class="item mobile-logo">
-            <div class="logo">
-                <a href="#">
-                    <img src="assets/images/logo.png" alt="img">
-                </a>
-            </div>
-        </div>
-        <div class="item item mobile-search-box has-sub">
-            <a href="#">
-						<span class="icon">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</span>
-            </a>
-            <div class="block-sub">
-                <a href="#" class="close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </a>
-                <div class="header-searchform-box">
-                    <form class="header-searchform">
-                        <div class="searchform-wrap">
-                            <input type="text" class="search-input" placeholder="Enter keywords to search...">
-                            <input type="submit" class="submit button" value="Search">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="item mobile-settings-box has-sub">
-            <a href="#">
-						<span class="icon">
-							<i class="fa fa-cog" aria-hidden="true"></i>
-						</span>
-            </a>
-            <div class="block-sub">
-                <a href="#" class="close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </a> 
-            </div>
-        </div>
-        <div class="item menu-bar">
-            <a class=" mobile-navigation  menu-toggle" href="#">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </div>
-    </div>
-</div>
-<div class="main-content main-content-about">
+ <div class="main-content main-content-about">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-trail breadcrumbs">
                     <ul class="trail-items breadcrumb">
                         <li class="trail-item trail-begin">
-                            <a href="index.html">Home</a>
+                            <a href="index.php"><?php echo translate('1') ?></a>
                         </li>
                         <li class="trail-item trail-end active">
-                            About Us
+                            <?php echo translate('38') ?>
                         </li>
                     </ul>
                 </div>
@@ -75,25 +29,10 @@
         <div class="row">
             <div class="content-area content-about col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="site-main">
-                    <h3 class="custom_blog_title">About Us</h3>
+                    <h3 class="custom_blog_title"><?php echo translate('38') ?></h3>
                     <div class="page-main-content">
                         <div class="header-banner banner-image">
-                            <div class="banner-wrap">
-                                <div class="banner-header">
-                                    <div class="col-lg-5 col-md-offset-7">
-                                        <div class="content-inner">
-                                            <h2 class="title">
-                                                New Collection <br/> for you
-                                            </h2>
-                                            <div class="sub-title">
-                                                Shop the latest products right <br/>
-                                                We have beard supplies from top brands.
-                                            </div>
-                                            <a href="#" class="gnash-button button">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             <?php echo $about['about']; ?>
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-4 col-sm-4">
@@ -105,10 +44,10 @@
                                         </div>
                                         <div class="content">
                                             <h4 class="title">
-                                                EU Free Delivery
+                                                <?php echo translate('60') ?>
                                             </h4>
                                             <div class="text">
-                                                Free Delivery on all order from EU with price more than $90.00
+                                               <?php echo translate('61') ?>
                                             </div>
                                         </div>
                                     </div>
@@ -123,10 +62,10 @@
                                         </div>
                                         <div class="content">
                                             <h4 class="title">
-                                                Money Guarantee
+                                               <?php echo translate('62') ?>
                                             </h4>
                                             <div class="text">
-                                                30 Days money back guarantee no question asked!
+                                                <?php echo translate('63') ?>
                                             </div>
                                         </div>
                                     </div>
@@ -141,10 +80,10 @@
                                         </div>
                                         <div class="content">
                                             <h4 class="title">
-                                                Online Support 24/7
+                                               <?php echo translate('64') ?>
                                             </h4>
                                             <div class="text">
-                                                We’re here to support to you 24/7. Let’s shopping now!
+                                               <?php echo translate('65') ?>
                                             </div>
                                         </div>
                                     </div>

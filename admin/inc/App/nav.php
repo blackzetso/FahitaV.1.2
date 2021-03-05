@@ -29,7 +29,13 @@
 
 						<div class="form-inline mr-auto horizontal" id="headerMenuCollapse">
 							<div class=" d-none d-lg-block">
-								<ul class="nav"> 
+								<ul class="nav">
+                                    <li class="nav-item with-sub">
+										<a class="nav-link mr-0" href="../" target="_blank">
+											<i class="fa fa-eye"></i>
+											<span> زيارة الموقع</span>
+										</a> 
+									</li>
 								</ul>
 						    </div>
 						</div>
@@ -48,7 +54,7 @@
 							<a href="#" class="nav-link nav-link-lg full-screen-link">
 								<i class="fa fa-expand"  id="fullscreen-button"></i>
 							</a>
-						</li>
+						</li> 
 						<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
 							<img src="img/avatar/<?php echo avatar($users['img']); ?>" alt="profile-user" class="rounded-circle w-32">
 							<div class="d-sm-none d-lg-inline-block"><?php echo ucfirst(user($_SESSION['admin'],'full_name')); ?></div></a>

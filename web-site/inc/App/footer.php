@@ -73,7 +73,7 @@
                         <ul class="menu">
                           
                             <li class="menu-item">
-                                <a href="about"><?php echo translate('38') ?></a>
+                                <a href="about.php"><?php echo translate('38') ?></a>
                             </li>
                             <li class="menu-item">
                                 <a href="policy.php"><?php echo translate('39') ?></a>

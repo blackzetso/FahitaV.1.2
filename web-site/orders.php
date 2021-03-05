@@ -114,7 +114,7 @@
                                             </a>
                                         </td>
                                         <td class="product-name text-center" style="text-align: center !important;" data-title="Product">
-                                            <a href="order_itmes.php?id=<?php echo $orderItems['order_id']; ?>" class="title"><?php echo $product['name']; ?></a> 
+                                            <a href="order_itmes.php?id=<?php echo $orderItems['order_id']; ?>" class="title">عرض تفاصيل الطلب</a> 
                                         </td>
                                         <td class="product-price text-center" style="text-align: center !important;" >
                                             <?php echo $item['order_status'] ?>

@@ -3,6 +3,8 @@
     include '../../../inc/App/function.php';
 
     $name = $_POST['name']; 
+    $view = isset($_POST['view']) ? '1' : '0';
+    $Order = $_POST['Order'];
 
     $iname  =  $_FILES['img']['name'];
     $type   =  $_FILES['img']['type'];
@@ -31,8 +33,8 @@
             $neName   = rand(0,10000000) .'.' . $Extension;
             move_uploaded_file($tmp ,'../../../img/categories/' . $neName);
             
-            $stmt = $con->prepare("INSERT INTO `categories` (`name`, `img`) VALUES (?,?)");
-            $stmt->execute([$name,$neName]);
+            $stmt = $con->prepare("INSERT INTO `categories` (`name`, `img`,`order_number`,`navbar`) VALUES (?,?,?,?)");
+            $stmt->execute([$name,$neName,$Order,$view]);
 
         if($stmt){
             echo successMessage('تم إضافة قسم جديد');
@@ -41,5 +43,4 @@
         foreach($formError as $error){
             echo errorMessage($error);
         }
-    }
-     
+    } 

@@ -32,6 +32,9 @@
 														<th class="wd-15p"> الأسم </th> 
                                                         <th class="wd-15p"> الإيميل </th>
                                                         <th class="wd-15p"> رقم الهاتف </th>
+                                                        <th class="wd-15p"> القوائم السعرية </th>
+                                                        <th class="wd-15p">  الدفعات </th>
+                                                        <th class="wd-15p">  مرتجعات </th>
                                                         <th class="wd-15p"> طلبات العميل </th>
                                                         <th class="wd-15p"> تفعيل الحسابات </th>
                                                         <th class="wd-15p"><i class="fa fa-cog" ></i> </th> 
@@ -43,6 +46,24 @@
                                                         <td><?php echo $cat['full_name']; ?></td>
 														<td><?php echo $cat['email']; ?></td>
                                                         <td><?php echo $cat['phone_number']; ?></td>
+                                                        <td>
+                                                            <form>
+                                                                <div class="form-group" >
+                                                                    <select class="form-control" >
+                                                                        <option >شريحة 1</option>
+                                                                        <option >شريحة 3</option>
+                                                                        <option >شريحة 4</option>
+                                                                        <option >شريحة 5</option>
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                            <a href="userOrders.php?id=<?php echo $cat['id']; ?>" class="btn btn-info" > <i class="ti-pencil-alt" ></i> </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="userOrders.php?id=<?php echo $cat['id']; ?>" class="btn btn-info" > <i class="ti-pencil-alt" ></i> </a>
+                                                        </td>
                                                         <td>
                                                             <a href="userOrders.php?id=<?php echo $cat['id']; ?>" class="btn btn-info" > <i class="ti-pencil-alt" ></i> </a>
                                                         </td>
@@ -57,7 +78,7 @@
                                                             <?php } ?>
                                                         </th>
  														<th class="wd-15p"> 
-                                                             
+                                                             <a href="addOrders.php?id=<?php echo $cat['id']; ?>" class="btn btn-success" > اضافة طلبية </a>
                                                              <a href="javascript:void(0)" class="btn btn-danger delete" data-toggle="modal" data-target="#item" data-id="<?php echo $cat['id']; ?>" ><i class="fa fa-trash" ></i> </a>
                                                         </th> 
 													</tr> 

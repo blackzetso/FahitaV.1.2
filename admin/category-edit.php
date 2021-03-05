@@ -35,8 +35,20 @@
                                             <div class="row text-right" dir="rtl" >  
                                                 <div class="col-md-12 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> اسم المنتج : <span class="text-danger" >*</span></label>
+                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> اسم القسم : <span class="text-danger" >*</span></label>
                                                         <input type="text" class="form-control text-right" value="<?php echo $row['name'] ?>" dir="rtl" name="name"required > 
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-12 col-sm-12" >
+                                                    <div class="form-group text-right" >
+                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> رقم الترتيب : <span class="text-danger" >*</span></label>
+                                                        <input type="number" class="form-control text-right" value="<?php echo $row['order_number'] ?>" dir="rtl" name="Order" required > 
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-12 col-sm-12" >
+                                                    <div class="form-group text-right" >
+                                                        <label for="recipient-name" class="form-control-label " dir="rtl"> الظهور فى القائمة : <span class="text-danger" >*</span></label>
+                                                        <input type="checkbox" class="form-control text-right" <?php if($row['navbar'] == '1'){ echo 'checked'; }  ?>  dir="rtl" name="view"   > 
                                                     </div>
                                                 </div> 
                                             </div> 

@@ -119,6 +119,12 @@
                         <h3 class="custommenu-title-blog">
                              ابحث بالماركه
                         </h3> 
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                             <div class="form-group" > 
+                                <label> البحث  </label>
+                                <input type="text" name="search" class="form-control" placeholder="search" >
+                             </div>
+                        </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                              <div class="form-group" >
                                 <label>القسم الفرعى</label>
@@ -517,16 +523,16 @@
       "position":"right"
   },
   "brandSetting":{
-      "brandName":"مولنا",
+      "brandName":"edsegypt",
       "brandSubTitle":"Typically replies within a day",
-      "brandImg":"https://macdoos.semi-colen.com/web-site/assets/images/logo.png",
+      "brandImg":"https://edsegypt.semi-colen.com/web-site/assets/images/logo.png",
       "welcomeText":"Hi, there!\nHow can I help you?",
       "messageText":"Hello, I have a question about {{page_link}}",
       "backgroundColor":"#0a5f54",
       "ctaText":"Start Chat",
       "borderRadius":"25",
-      "autoShow":true,
-      "phoneNumber":"32465261609"
+      "autoShow":false,
+      "phoneNumber":"+201010475455"
   }
 };
     s.onload = function() {

@@ -10,7 +10,7 @@
 								</span>
 							</a>
 						</div>
-					</div>
+					</div> 
 					<ul class="side-menu">
 						<li class="slide">
 							<a class="side-menu__item" href="categories.php"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label">إدارة الأقسام</span> </a>
@@ -31,6 +31,7 @@
 								<li><a href="pending.php" class="slide-item"> جاري توصيلها</a></li>
 								<li><a href="done.php" class="slide-item">  تم تسليمها </a></li> 
                                 <li><a href="canceled.php" class="slide-item"> مرتجع </a></li> 
+                                <li><a href="wanted.php" class="slide-item"> طلباتك أوامر </a></li> 
 							</ul>
 						</li>
                         <li>
@@ -52,8 +53,18 @@
 							</ul>
 						</li>
                         <li class="slide">
-							<a class="side-menu__item" href="settings.php"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label"> الإعدادات  </span> </a>
-						</li>
+							<a class="side-menu__item" data-toggle="slide" href="#" ><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label"> الإعدادات  </span><i class="angle fa fa-angle-right"></i> </a>
+						    <ul class="slide-menu">
+								<li><a href="settings.php" class="slide-item"> اعدادات عامه </a></li> 
+								<li><a href="about.php" class="slide-item"> من نحن </a></li> 
+                                <li><a href="contact.php" class="slide-item"> اتصل بنا </a></li> 
+                                <li><a href="policy.php" class="slide-item"> سياسة المتجر </a></li> 
+                                <li><a href="policy.php" class="slide-item">  فريق العمل  </a></li> 
+							</ul>
+                        </li>
+                         <li class="slide">
+							<a class="side-menu__item" href="language.php" ><i class="side-menu__icon fe fe-globe"></i><span class="side-menu__label"> اللغات والترجمة </span> </a>
+                         </li>
 					    
                         
 					</ul>
