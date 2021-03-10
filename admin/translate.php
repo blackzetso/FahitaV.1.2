@@ -3,16 +3,14 @@
       $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
       
       function getTranslate($value) {
-        global $id;
         global $con;
-        
-        $stmt = $con->prepare("SELECT 'word' FROM `translation` WHERE lang = ? and key_id = ? ");
+        global $id;
+        $stmt = $con->prepare("SELECT * FROM `translation` WHERE lang = ? AND key_id = ? ");
         $stmt->execute([$id,$value]);
         $trans = $stmt->fetch(); 
         
         return $trans['word'];
-      }
-       ?>
+      } ?>
 
 				<div class="app-content">
 					<section class="section">
@@ -46,12 +44,12 @@
                                                 <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getTranslate('1'); ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','1') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','1') ?>" dir="rtl" name="name1"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('1'); ?>" dir="rtl" name="name1"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -63,7 +61,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','2') ?>" dir="rtl" name="name2"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('2'); ?>" dir="rtl" name="name2"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -75,7 +73,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','3') ?>" dir="rtl" name="name3"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('3'); ?>" dir="rtl" name="name3"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -87,7 +85,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','4') ?>" dir="rtl" name="name4"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('4'); ?>" dir="rtl" name="name4"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -99,7 +97,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','5') ?>" dir="rtl" name="name5"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('5'); ?>" dir="rtl" name="name5"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -111,7 +109,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','6') ?>" dir="rtl" name="name6"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('6'); ?>" dir="rtl" name="name6"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -123,7 +121,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','7') ?>" dir="rtl" name="name7"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('7'); ?>" dir="rtl" name="name7"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -135,7 +133,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','8') ?>" dir="rtl" name="name8"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('8'); ?>" dir="rtl" name="name8"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -147,7 +145,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','9') ?>" dir="rtl" name="name9"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('9'); ?>" dir="rtl" name="name9"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -159,7 +157,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','10') ?>" dir="rtl" name="name10"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('10'); ?>" dir="rtl" name="name10"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -171,7 +169,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','11') ?>" dir="rtl" name="name11"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('11'); ?>" dir="rtl" name="name11"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -183,7 +181,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','12') ?>" dir="rtl" name="name12"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('12'); ?>" dir="rtl" name="name12"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -195,7 +193,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','13') ?>" dir="rtl" name="name13"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('13'); ?>" dir="rtl" name="name13"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -207,7 +205,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','14') ?>" dir="rtl" name="name14"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('14'); ?>" dir="rtl" name="name14"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -219,7 +217,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','15') ?>" dir="rtl" name="name15"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('15'); ?>" dir="rtl" name="name15"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -231,7 +229,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','16') ?>" dir="rtl" name="name16"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('16'); ?>" dir="rtl" name="name16"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -243,7 +241,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','17') ?>" dir="rtl" name="name17"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('17'); ?>" dir="rtl" name="name17"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -255,7 +253,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','18') ?>" dir="rtl" name="name18"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('18'); ?>" dir="rtl" name="name18"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -267,7 +265,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','19') ?>" dir="rtl" name="name19"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('19'); ?>" dir="rtl" name="name19"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -279,7 +277,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','20') ?>" dir="rtl" name="name20"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('20'); ?>" dir="rtl" name="name20"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -291,7 +289,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','21') ?>" dir="rtl" name="name21"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('21'); ?>" dir="rtl" name="name21"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -303,7 +301,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','22') ?>" dir="rtl" name="name22"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('22'); ?>" dir="rtl" name="name22"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -315,7 +313,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','23') ?>" dir="rtl" name="name23"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('23'); ?>" dir="rtl" name="name23"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -327,7 +325,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','24') ?>" dir="rtl" name="name24"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('24'); ?>" dir="rtl" name="name24"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -339,7 +337,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','25') ?>" dir="rtl" name="name25"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('25'); ?>" dir="rtl" name="name25"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -351,7 +349,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','26') ?>" dir="rtl" name="name26"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('26'); ?>" dir="rtl" name="name26"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -363,7 +361,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','27') ?>" dir="rtl" name="name27"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('27'); ?>" dir="rtl" name="name27"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -375,7 +373,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','28') ?>" dir="rtl" name="name"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('28'); ?>" dir="rtl" name="name28" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -387,7 +385,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','29') ?>" dir="rtl" name="name29"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('29'); ?>" dir="rtl" name="name29" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -399,7 +397,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','30') ?>" dir="rtl" name="name30"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('30'); ?>" dir="rtl" name="name30" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -411,7 +409,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','31') ?>" dir="rtl" name="name31"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('31'); ?>" dir="rtl" name="name31" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -424,7 +422,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','33') ?>" dir="rtl" name="name33"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('33'); ?>" dir="rtl" name="name33"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -436,7 +434,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','34') ?>" dir="rtl" name="name34"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('34'); ?>" dir="rtl" name="name34"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -448,7 +446,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','35') ?>" dir="rtl" name="name35" required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('35'); ?>" dir="rtl" name="name35" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -460,7 +458,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','36') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('36'); ?>" dir="rtl" name="name36"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -472,7 +470,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','37') ?>" dir="rtl" name="name37"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('37'); ?>" dir="rtl" name="name37"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -484,7 +482,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','38') ?>" dir="rtl" name="name38"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('38'); ?>" dir="rtl" name="name38"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -496,7 +494,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name39"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('39'); ?>" dir="rtl" name="name39"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End -->
@@ -508,7 +506,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','40') ?>" dir="rtl" name="name40"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('40'); ?>" dir="rtl" name="name40"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -520,7 +518,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','41') ?>" dir="rtl" name="name41"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('41'); ?>" dir="rtl" name="name41"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -532,7 +530,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','42') ?>" dir="rtl" name="name42"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('42'); ?>" dir="rtl" name="name42"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -544,7 +542,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','43') ?>" dir="rtl" name="name43"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('43'); ?>" dir="rtl" name="name43"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -556,7 +554,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','44') ?>" dir="rtl" name="name44"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('44'); ?>" dir="rtl" name="name44"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -568,7 +566,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','45') ?>" dir="rtl" name="name45"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('45'); ?>" dir="rtl" name="name45"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -580,7 +578,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','46') ?>" dir="rtl" name="name46"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('46'); ?>" dir="rtl" name="name46"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -592,7 +590,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','47') ?>" dir="rtl" name="name47"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('47'); ?>" dir="rtl" name="name47"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -604,7 +602,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','48') ?>" dir="rtl" name="name48"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('48'); ?>" dir="rtl" name="name48"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -616,7 +614,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','49') ?>" dir="rtl" name="name49"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('49'); ?>" dir="rtl" name="name49"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -628,7 +626,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','50') ?>" dir="rtl" name="name50"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('50'); ?>" dir="rtl" name="name50"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -640,7 +638,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','51') ?>" dir="rtl" name="name51"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('51'); ?>" dir="rtl" name="name51"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -652,7 +650,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','52') ?>" dir="rtl" name="name52"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('52'); ?>" dir="rtl" name="name52"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -664,7 +662,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','53') ?>" dir="rtl" name="name53"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('53'); ?>" dir="rtl" name="name53"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -676,7 +674,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','54') ?>" dir="rtl" name="name54"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('54'); ?>" dir="rtl" name="name54"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -688,7 +686,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','55') ?>" dir="rtl" name="name55"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('55'); ?>" dir="rtl" name="name55"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -700,7 +698,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','56') ?>" dir="rtl" name="name56"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('56'); ?>" dir="rtl" name="name56"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -712,7 +710,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','57') ?>" dir="rtl" name="name57"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('57'); ?>" dir="rtl" name="name57"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -724,7 +722,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','58') ?>" dir="rtl" name="name58"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('58'); ?>" dir="rtl" name="name58"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -736,7 +734,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','59') ?>" dir="rtl" name="name59"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('59'); ?>" dir="rtl" name="name59"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -748,7 +746,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','60') ?>" dir="rtl" name="name60"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('60'); ?>" dir="rtl" name="name60"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -760,7 +758,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','61') ?>" dir="rtl" name="name61"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('61'); ?>" dir="rtl" name="name61"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -772,7 +770,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','62') ?>" dir="rtl" name="name62"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('62'); ?>" dir="rtl" name="name62"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -784,7 +782,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','63') ?>" dir="rtl" name="name63"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('63'); ?>" dir="rtl" name="name63"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -796,7 +794,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','64') ?>" dir="rtl" name="name64"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('64'); ?>" dir="rtl" name="name64"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -808,7 +806,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','65') ?>" dir="rtl" name="name65"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('65'); ?>" dir="rtl" name="name65"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -820,7 +818,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','66') ?>" dir="rtl" name="name66"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('66'); ?>" dir="rtl" name="name66"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -832,7 +830,7 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','67') ?>" dir="rtl" name="name67"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('67'); ?>" dir="rtl" name="name67"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
@@ -844,154 +842,155 @@
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','68') ?>" dir="rtl" name="name68"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('68'); ?>" dir="rtl" name="name68"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','69') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                             <input type="text" class="form-control text-right" value="<?php echo getTranslate('69'); ?>" dir="rtl" name="name69" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','70') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('70'); ?>" dir="rtl" name="name70"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','71') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('71'); ?>" dir="rtl" name="name71"required > 
+                                                    </div>
+                                                </div>
+                                                <!-- End -->  
+                                                 <!-- Start -->
+                                                <div class="col-md-6 col-sm-12" >
+                                                    <div class="form-group text-right" > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','73') ?>" dir="rtl" disabled > 
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-6 col-sm-12" >
+                                                    <div class="form-group text-right" >
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('73'); ?>" dir="rtl" name="name73"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','74') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('74'); ?>" dir="rtl" name="name74"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','75') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('75'); ?>" dir="rtl" name="name75"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','76') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('76'); ?>" dir="rtl" name="name76"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','77') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('77'); ?>" dir="rtl" name="name77"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','78') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('78'); ?>" dir="rtl" name="name78" required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','79') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('79'); ?>" dir="rtl" name="name79"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','80') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('80'); ?>" dir="rtl" name="name80"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
                                                  <!-- Start -->
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
+                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','81') ?>" dir="rtl" disabled > 
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-6 col-sm-12" >
                                                     <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
+                                                         <input type="text" class="form-control text-right" value="<?php echo getTranslate('81'); ?>" dir="rtl" name="name81"required > 
                                                     </div>
                                                 </div>
                                                 <!-- End --> 
-                                                 <!-- Start -->
-                                                <div class="col-md-6 col-sm-12" >
-                                                    <div class="form-group text-right" > 
-                                                        <input type="text" class="form-control text-right" value="<?php echo getColumn('key_name','attributes','id','39') ?>" dir="rtl" disabled > 
-                                                    </div>
-                                                </div> 
-                                                <div class="col-md-6 col-sm-12" >
-                                                    <div class="form-group text-right" >
-                                                         <input type="text" class="form-control text-right" value="<?php echo getColumn('word','translation','key_id','39') ?>" dir="rtl" name="name36"required > 
-                                                    </div>
-                                                </div>
-                                                <!-- End --> 
+                                                
                                                 
                                                 
                                             </div> 

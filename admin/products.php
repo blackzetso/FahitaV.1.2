@@ -1,7 +1,10 @@
 <?php include 'init.php'; 
+
+      $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
+
      
-      $stmt = $con->prepare("SELECT * FROM products ORDER BY order_product DESC");
-      $stmt->execute();
+      $stmt = $con->prepare("SELECT * FROM products WHERE lang = ? ORDER BY order_product DESC");
+      $stmt->execute([$id]);
       $rows = $stmt->fetchAll();
 
       $stmt = $con->prepare("SELECT * FROM unit ORDER BY id DESC");
@@ -28,7 +31,7 @@
 									<div class="card-body">
                                         <div class="row" dir="rtl" >
                                             <div class="col-lg-4 text-right" >
-                                                <a class="btn btn-primary mb-3" href="add-product-one-unite.php" >اضافة منتج</a>
+                                                <a class="btn btn-primary mb-3" href="addProduct.php?lang=<?php echo $id; ?>" >اضافة منتج</a>
                                              </div>
                                         </div>
 										<div class="table-responsive">

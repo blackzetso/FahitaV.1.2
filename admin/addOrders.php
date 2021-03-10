@@ -5,8 +5,7 @@
       $stmt = $con->prepare("SELECT * FROM products ORDER BY order_product DESC");
       $stmt->execute();
       $rows = $stmt->fetchAll();
-  ?>
-
+  ?> 
 				<div class="app-content">
 					<section class="section">
                     	<ol class="breadcrumb">
@@ -43,8 +42,7 @@
                                                             <img height="50px" width="50px" src="../img/products/<?php echo $cat['img']; ?>" >
                                                         </td>
 														<td><?php echo $cat['name']; ?></td>
- 														<th class="wd-15p"> 
-                                                            
+ 														<th class="wd-15p">
                                                             <a href="javascript:void(0)" class="btn btn-info delete" data-toggle="modal" data-target="#item" data-id="<?php echo $cat['id']; ?>" ><i class="fa fa-plus" ></i> </a>
                                                         </th> 
 													</tr> 

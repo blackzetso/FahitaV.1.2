@@ -1,7 +1,8 @@
 <?php include 'init.php'; 
-     
-      $stmt = $con->prepare("SELECT * FROM categories ORDER BY id DESC");
-      $stmt->execute();
+      $lang = isset($_GET['lang']) && is_numeric($_GET['lang']) ? intval($_GET['lang']) : 0;
+
+      $stmt = $con->prepare("SELECT * FROM categories WHERE lang = ? ORDER BY id DESC");
+      $stmt->execute([$lang]);
       $cats = $stmt->fetchAll(); ?>
 
 				<div class="app-content">
@@ -100,6 +101,7 @@
                                     </div> 
                                 </div>
                                 <div class="modal-footer">
+                                    <input type="hidden" value="<?php echo $lang; ?>" name="lang" >
                                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary"> Save  </button>
                                 </div>

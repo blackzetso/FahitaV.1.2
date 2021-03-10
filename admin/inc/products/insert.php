@@ -15,6 +15,7 @@
     $short_desc = 'empty';
     $description = 'empty';
     $brand  = $_POST['brand'];
+    $lang = $_POST['lang'];
 
     //$feature = $_POST['feature'];
     //$bestSeller = $_POST['bestSeller'];
@@ -45,6 +46,8 @@
           $formError[]  =  'انت تحاول رفع ملف غير مدعوم';  
         } 
     }
+
+
         if(empty($formError)){ 
             $multiimge = explode('.', $iname);
             $Extension = strtolower(end($multiimge));
@@ -52,10 +55,10 @@
             $neName   = rand(0,10000000) .'.' . $Extension;
             move_uploaded_file($tmp ,'../../../img/products/' . $neName);
             
-            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`,`brand`) 
+            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`,`brand`,`lang`) 
                                                     VALUES 
-                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand]);
+                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand,$lang]);
 
         if($stmt){
             echo successMessage('تم إضافة منتج جديد');

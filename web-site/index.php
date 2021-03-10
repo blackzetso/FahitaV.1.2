@@ -29,9 +29,9 @@
         </div>
         <div class="item item mobile-search-box has-sub">
             <a href="#">
-						<span class="icon">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</span>
+                <span class="icon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
             </a>
             <div class="block-sub">
                 <a href="#" class="close">
@@ -115,7 +115,7 @@
          <div class="gnash-product produc-featured rows-space-65">
             <div class="container">
                  <form action="filter.php" method="post" >
-                     <div class="row" dir="rtl" > 
+                     <div class="row"   > 
                         <h3 class="custommenu-title-blog">
                              ابحث بالماركه
                         </h3> 

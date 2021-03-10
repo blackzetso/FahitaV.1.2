@@ -1,6 +1,6 @@
 <?php include 'init.php'; 
       
-      $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
+      $lang = isset($_GET['lang']) && is_numeric($_GET['lang']) ? intval($_GET['lang']) : 0;
 
       $stmt = $con->prepare("SELECT * FROM products WHERE id = ? ");
       $stmt->execute([$id]);
@@ -14,8 +14,8 @@
       $stmt->execute();
       $brands = $stmt->fetchAll();
 
-      $stmt = $con->prepare("SELECT * FROM categories ORDER BY id DESC");
-      $stmt->execute();
+      $stmt = $con->prepare("SELECT * FROM categories WHERE lang = ? ORDER BY id DESC");
+      $stmt->execute([$lang]);
       $cats = $stmt->fetchAll(); 
 
       $stmt = $con->prepare("SELECT * FROM subcategories WHERE category = ? ORDER BY id DESC");
@@ -38,13 +38,20 @@
 									<div class="card-body">
                                         <div id="success" ></div> 
                                         
-                                         <form id="add" enctype="multipart/form-data">
+                                         <form id="add" class="dropzone" id="my-awesome-dropzone" enctype="multipart/form-data">
+                                             
                                             <div class="modal-body">
                                                     <div class="row" >
                                                         <div class="col-12" >
                                                             <div class="form-group files text-right">
                                                                 <label for="recipient-name" class="form-control-label " dir="rtl"> صورة المنتج : <span class="text-danger" >*</span></label>
                                                                 <input type="file" class="form-control1" name="img" required >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12" >
+                                                            <div class="form-group text-right" > 
+                                                                  <label for="recipient-name" class="form-control-label " dir="rtl"> صور إضافية للمنتج : <span class="text-danger" >*</span></label>
+                                                                  <input type="file" name="files" class="files"> 
                                                             </div>
                                                         </div>
                                                     </div>
@@ -152,8 +159,9 @@
                                                             </div>
                                                         </div>
                                                     </div>  
-                                            </div>
+                                            </div> 
                                             <div class="modal-footer">
+                                                <input type="hidden" name="lang" value="<?php echo $lang; ?>" >
                                                 <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary"> Save  </button>
                                             </div>
@@ -191,8 +199,17 @@
 
 		<!--Jquery.min js-->
 		<script src="assets/js/jquery.min.js"></script>
-
-		<!--popper js-->
+        
+        <script src="assets/plugins/file-uploader/dist/jquery.fileuploader.min.js" type="text/javascript"></script>
+		
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('input.files').fileuploader({
+                    // Options will go here
+                });
+            });
+        </script>
+        <!--popper js-->
 		<script src="assets/js/popper.js"></script>
 
 		<!--Tooltip js-->
@@ -225,8 +242,9 @@
 		<script src="assets/js/scripts.js"></script>
         <!-- Icon Picker -->
         <script type="text/javascript" src="assets/plugins/icon-picker/bootstrap-iconpicker.bundle.min.js"></script>
-
+        <script src="assets/plugins/drobzone/dropzone.js"></script>
 		<script>
+            $("div#myId").dropzone({ url: "/file/post" });
 			$(function(e) {
 				$('#example').DataTable();
 			} );

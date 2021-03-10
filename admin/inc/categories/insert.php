@@ -5,6 +5,7 @@
     $name = $_POST['name']; 
     $view = isset($_POST['view']) ? '1' : '0';
     $Order = $_POST['Order'];
+    $lang = $_POST['lang'];
 
     $iname  =  $_FILES['img']['name'];
     $type   =  $_FILES['img']['type'];
@@ -12,7 +13,7 @@
     $size   =  $_FILES['img']['size']; 
 
     $allowed =  array("jpg","jpeg","png","gif","webp"); 
-
+ 
     $explode  = explode('.',$iname);
     $filetype = strtolower(end($explode));
 
@@ -33,8 +34,8 @@
             $neName   = rand(0,10000000) .'.' . $Extension;
             move_uploaded_file($tmp ,'../../../img/categories/' . $neName);
             
-            $stmt = $con->prepare("INSERT INTO `categories` (`name`, `img`,`order_number`,`navbar`) VALUES (?,?,?,?)");
-            $stmt->execute([$name,$neName,$Order,$view]);
+            $stmt = $con->prepare("INSERT INTO `categories` (`name`, `img`,`order_number`,`navbar`,`lang`) VALUES (?,?,?,?,?)");
+            $stmt->execute([$name,$neName,$Order,$view,$lang]);
 
         if($stmt){
             echo successMessage('تم إضافة قسم جديد');

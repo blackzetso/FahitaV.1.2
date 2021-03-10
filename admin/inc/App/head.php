@@ -37,4 +37,8 @@
         <link rel="stylesheet" href="assets/plugins/toastr/build/toastr.css"  >  
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-	</head>
+	
+        <link href="assets/plugins/file-uploader/dist/font-fileuploader.css" media="all" rel="stylesheet">
+        <link href="assets/plugins/file-uploader/dist/jquery.fileuploader.min.css" media="all" rel="stylesheet">
+
+    </head>

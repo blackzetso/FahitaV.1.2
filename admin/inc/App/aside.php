@@ -1,4 +1,9 @@
+<?php
 
+    $stmt = $con->prepare("SELECT * FROM language");
+    $stmt->execute();
+    $langs = $stmt->fetchAll();
+?> 
 				<aside class="app-sidebar">
 					<div class="app-sidebar__user">
 					    <div class="dropdown">
@@ -11,12 +16,22 @@
 							</a>
 						</div>
 					</div> 
-					<ul class="side-menu">
-						<li class="slide">
-							<a class="side-menu__item" href="categories.php"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label">إدارة الأقسام</span> </a>
+					<ul class="side-menu"> 
+                        <li class="slide">
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-desktop"></i><span class="side-menu__label">إدارة الأقسام</span><i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu"> 
+								<?php foreach($langs as $lang){ ?>
+								<li><a href="categories.php?lang=<?php echo $lang['id']; ?>" class="slide-item">  <?php echo $lang['name']; ?>   </a></li> 
+                                <?php } ?>
+							</ul>
 						</li>
-						<li>
-							<a class="side-menu__item" href="products.php"><i class="side-menu__icon fe fe-tag"></i><span class="side-menu__label">المنتجات</span></a>
+                        <li class="slide">
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-tag"></i><span class="side-menu__label">المنتجات</span><i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu"> 
+								<?php foreach($langs as $lang){ ?>
+								<li><a href="products.php?id=<?php echo $lang['id']; ?>" class="slide-item">  <?php echo $lang['name']; ?>   </a></li> 
+                                <?php } ?>
+							</ul>
 						</li>
                         <li>
 							<a class="side-menu__item" href="units.php"><i class="side-menu__icon icon icon-handbag"></i><span class="side-menu__label">الوحدات</span></a>
