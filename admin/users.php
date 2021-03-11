@@ -32,6 +32,7 @@
 														<th class="wd-15p"> الأسم </th> 
                                                         <th class="wd-15p"> الإيميل </th>
                                                         <th class="wd-15p"> رقم الهاتف </th>
+                                                        <th class="wd-15p"> النقاط </th>
                                                         <th class="wd-15p"> القوائم السعرية </th>
                                                         <th class="wd-15p">  الدفعات </th>
                                                         <th class="wd-15p">  مرتجعات </th>
@@ -46,6 +47,7 @@
                                                         <td><?php echo $cat['full_name']; ?></td>
 														<td><?php echo $cat['email']; ?></td>
                                                         <td><?php echo $cat['phone_number']; ?></td>
+                                                        <td><?php echo $cat['ads_points']; ?></td>
                                                         <td>
                                                             <form>
                                                                 <div class="form-group" >

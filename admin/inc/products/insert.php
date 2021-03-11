@@ -13,10 +13,12 @@
     $category = $_POST['category'];
     $subCat = $_POST['subCat'];
     $short_desc = 'empty';
-    $description = 'empty';
+    $description = $_POST['area'];
     $brand  = $_POST['brand'];
-    $lang = $_POST['lang'];
+    $lang = $_POST['lang']; 
+    $taken = generateRandomString();
 
+ 
     //$feature = $_POST['feature'];
     //$bestSeller = $_POST['bestSeller'];
     //$newArrival = $_POST['newArrival'];
@@ -29,12 +31,24 @@
     $iname  =  $_FILES['img']['name'];
     $type   =  $_FILES['img']['type'];
     $tmp    =  $_FILES['img']['tmp_name'];
-    $size   =  $_FILES['img']['size']; 
+    $size   =  $_FILES['img']['size'];
+    
+    $image_name  =  $_FILES['files']['name'];
+    $image_type  =  $_FILES['files']['type'];
+    $image_tmp   =  $_FILES['files']['tmp_name'];
+    $image_size  =  $_FILES['files']['size'];
+    
+
+    $files_count = count($image_name);
+
+    
 
     $allowed =  array("jpg","jpeg","png","gif","webp"); 
 
     $explode  = explode('.',$iname);
     $filetype = strtolower(end($explode));
+
+ 
 
     $formError = array();
 
@@ -48,18 +62,29 @@
     }
 
 
-        if(empty($formError)){ 
-            $multiimge = explode('.', $iname);
-            $Extension = strtolower(end($multiimge));
-
-            $neName   = rand(0,10000000) .'.' . $Extension;
+        if(empty($formError)){  
+            // توليد اسم عشوائى لإسم الصورة الأساسية
+            $neName   = rand(10000,10000000) .'.' . $filetype; 
+            // رفع الصورة داخل فولدر المنتجات 
             move_uploaded_file($tmp ,'../../../img/products/' . $neName);
-            
-            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`,`brand`,`lang`) 
+            // إدخال اسم الصورة الأساسية داخل قاعدة البيانات
+            $stmt = $con->prepare("INSERT INTO `products` ( `name`, `img`, `description`, `short_desc`, `price`, `unite`, `Decimal_number`, `discount`,`order_product`,`Availability`, `category`, `subcategory`,`best_seller`,`new_arrivals`,`featured`,`Deal_Of_Day`,`brand`,`lang`,`taken`) 
                                                     VALUES 
-                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand,$lang]);
-
+                                                          (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute([$name,$neName,$description,$short_desc,$price,$unit,$decimal,$discount,$order,$Availability,$category,$subCat,$bestSeller,$newArrival,$feature,$deal,$brand,$lang,$taken]);
+            
+            if($stmt){ //ادخال الصور الإضافية للمنتج 
+                for($i = 0;$i < $files_count; $i++){
+                    $multiimge[$i]   = explode('.', $image_name[$i]);
+                    $Extension[$i] = strtolower(end($multiimge[$i])); 
+                    
+                    $filename[$i]    = rand(100000,10000000) .'.' . $Extension[$i];
+                    move_uploaded_file($image_tmp[$i] ,'../../../img/products/' . $filename[$i]);
+                     
+                    $stmt = $con->prepare("INSERT INTO `product_images` (`img`, `taken`) VALUES (?,?)");
+                    $stmt->execute([$filename[$i],$taken]);
+                }
+            }
         if($stmt){
             echo successMessage('تم إضافة منتج جديد');
         }

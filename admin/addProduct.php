@@ -51,7 +51,7 @@
                                                         <div class="col-12" >
                                                             <div class="form-group text-right" > 
                                                                   <label for="recipient-name" class="form-control-label " dir="rtl"> صور إضافية للمنتج : <span class="text-danger" >*</span></label>
-                                                                  <input type="file" name="files" class="files"> 
+                                                                  <input type="file" name="files[]" class="files"> 
                                                             </div>
                                                         </div>
                                                     </div>
@@ -84,12 +84,20 @@
                                                                 <input type="text" class="form-control text-right" dir="rtl" name="discount" value="0">
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-12 col-sm-12" >
+                                                            <div class="form-group text-right" >
+                                                                <textarea name="area"  ></textarea>
+                                                                 <script>
+                                                                        CKEDITOR.replace( 'area' );
+                                                                </script>
+                                                            </div>
+                                                        </div> 
                                                         <div class="col-md-6 col-sm-12" >
                                                             <div class="form-group text-right" >
                                                                 <label for="recipient-name" class="form-control-label " dir="rtl"> الأرقام العشريه للوحده :  </label>
                                                                 <input type="text" class="form-control text-right" dir="rtl" name="decimal"required value="0.5"> 
                                                             </div>
-                                                        </div>
+                                                        </div> 
                                                         <div class="col-md-6 col-sm-12" >
                                                             <div class="form-group text-right" >
                                                                 <label for="recipient-name" class="form-control-label " dir="rtl">  ترتيب المنتج  :  </label>
@@ -171,8 +179,7 @@
 							</div>
 						</div>
 					</section>
-				</div>
-                
+				</div> 
                     <!-- Message Modal -->
 				<div class="modal fade" id="image-edit" tabindex="-1" role="dialog"  aria-hidden="true">
 					<div class="modal-dialog" role="document">

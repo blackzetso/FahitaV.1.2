@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 مارس 2021 الساعة 08:33
+-- Generation Time: 11 مارس 2021 الساعة 14:46
 -- إصدار الخادم: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -179,7 +179,7 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`id`, `name`, `image`) VALUES
-(3, 'هيونداى', '8703967.jpg');
+(4, 'kinder', '2931453.jpg');
 
 -- --------------------------------------------------------
 
@@ -216,17 +216,19 @@ CREATE TABLE `categories` (
   `name` varchar(60) NOT NULL,
   `img` varchar(100) NOT NULL,
   `order_number` int(11) NOT NULL DEFAULT 0,
-  `navbar` tinyint(4) NOT NULL DEFAULT 0
+  `navbar` tinyint(4) NOT NULL DEFAULT 0,
+  `lang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `img`, `order_number`, `navbar`) VALUES
-(30, 'خضروات وفواكه', '5066537.jpg', 0, 0),
-(31, 'عطارة و أعشاب', '4503939.jpg', 0, 0),
-(32, 'منظفات', '9089634.jpeg', 3, 1);
+INSERT INTO `categories` (`id`, `name`, `img`, `order_number`, `navbar`, `lang`) VALUES
+(30, 'خضروات وفواكه', '5066537.jpg', 0, 0, 1),
+(31, 'عطارة و أعشاب', '4503939.jpg', 0, 0, 1),
+(32, 'منظفات', '9089634.jpeg', 3, 1, 1),
+(33, 'خضروات وفواكه', '2712138.jpg', 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -252,6 +254,17 @@ INSERT INTO `contact_us` (`id`, `map`, `adress`, `phone`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `features_groups`
+--
+
+CREATE TABLE `features_groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `language`
 --
 
@@ -267,7 +280,8 @@ CREATE TABLE `language` (
 
 INSERT INTO `language` (`id`, `name`, `code`) VALUES
 (1, 'arabic', 'ar'),
-(2, 'english', 'en');
+(2, 'english', 'en'),
+(11, 'فرنسي', 'fr');
 
 -- --------------------------------------------------------
 
@@ -352,26 +366,55 @@ CREATE TABLE `products` (
   `new_arrivals` tinyint(4) NOT NULL DEFAULT 0,
   `featured` tinyint(4) NOT NULL DEFAULT 0,
   `Deal_Of_Day` int(11) NOT NULL DEFAULT 0,
-  `brand` int(11) DEFAULT NULL
+  `brand` int(11) DEFAULT NULL,
+  `lang` int(11) DEFAULT NULL,
+  `taken` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `img`, `description`, `short_desc`, `price`, `price2`, `unite`, `unite2`, `Decimal_number`, `discount`, `order_product`, `Additional_img`, `Availability`, `category`, `subcategory`, `best_seller`, `new_arrivals`, `featured`, `Deal_Of_Day`, `brand`) VALUES
-(561, 'بصل أخضر', '2380085.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 1, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(562, 'طماطم', '6255372.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 1, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(563, 'خيار', '5953501.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 3, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(564, 'باذنجان', '5836158.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 4, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(565, 'بطاطس', '9872869.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 5, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(566, 'جزر', '4223907.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 5, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(567, 'كوسا', '7479221.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 6, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(568, 'بصل', '4800634.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 6, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(569, 'بطاطا حمرا', '9259534.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 7, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(570, 'فلفل حراق', '1967122.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 8, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(571, 'طماطم شيرى', '9861584.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 9, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0),
-(572, 'ليمون بلدى', '544346.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 9, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0);
+INSERT INTO `products` (`id`, `name`, `img`, `description`, `short_desc`, `price`, `price2`, `unite`, `unite2`, `Decimal_number`, `discount`, `order_product`, `Additional_img`, `Availability`, `category`, `subcategory`, `best_seller`, `new_arrivals`, `featured`, `Deal_Of_Day`, `brand`, `lang`, `taken`) VALUES
+(561, 'بصل أخضر', '2380085.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 1, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, 1, '0'),
+(562, 'طماطم', '6255372.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 1, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, 2, '0'),
+(563, 'خيار', '5953501.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 3, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(564, 'باذنجان', '5836158.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 4, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(565, 'بطاطس', '9872869.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 5, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(566, 'جزر', '4223907.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 5, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(567, 'كوسا', '7479221.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 6, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(568, 'بصل', '4800634.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 6, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(569, 'بطاطا حمرا', '9259534.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 7, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(570, 'فلفل حراق', '1967122.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 8, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(571, 'طماطم شيرى', '9861584.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 9, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(572, 'ليمون بلدى', '544346.jpeg', 'empty', 'empty', '5', 'empty', 'كجم', 'empty', '0.5', '0', 9, NULL, 'متوفر فى المخزن', 30, 43, 1, 1, 1, 1, 0, NULL, '0'),
+(575, 'كريز', '3234193.jpg', 'empty', 'empty', '12', 'empty', 'box', 'empty', '0.5', '0', 0, NULL, 'غير متوفر فى المخزن', 30, 44, 0, 1, 1, 1, 4, 11, '0'),
+(578, 'منتج رقم 1', '8199758.jpg', 'empty', 'empty', '132', 'empty', 'كجم', 'empty', '0.5', '0', 0, NULL, 'متوفر فى المخزن', 30, 43, 1, 0, 1, 0, 4, 1, 'rMWqYU6E7sGE91KKQomd'),
+(579, 'يسي', '569466.jpg', '<p style=\"text-align:center\"><strong><span style=\"color:#8e44ad\"><span style=\"font-size:28px\">وصف</span></span></strong></p>\r\n', 'empty', '12', 'empty', 'box', 'empty', '0.5', '0', 0, NULL, 'متوفر فى المخزن', 30, 43, 1, 0, 1, 0, 0, 1, 'OglbkkTJBSB0iTVc01Qd');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `product_images`
+--
+
+CREATE TABLE `product_images` (
+  `id` int(11) NOT NULL,
+  `img` varchar(60) CHARACTER SET utf8 DEFAULT NULL,
+  `taken` varchar(20) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `product_images`
+--
+
+INSERT INTO `product_images` (`id`, `img`, `taken`) VALUES
+(1, '4823270.jpg', 'rMWqYU6E7sGE91KKQomd'),
+(2, '2506226.jpg', 'rMWqYU6E7sGE91KKQomd'),
+(3, '8354559.jpg', 'rMWqYU6E7sGE91KKQomd'),
+(4, '571370.jpg', 'rMWqYU6E7sGE91KKQomd'),
+(5, '5682073.jpg', 'rMWqYU6E7sGE91KKQomd'),
+(6, '504712.', 'OglbkkTJBSB0iTVc01Qd');
 
 -- --------------------------------------------------------
 
@@ -559,11 +602,11 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (53, 26, 'finish order', 2),
 (54, 26, 'اتمام الطلب', 1),
 (55, 29, 'Time of receipt', 2),
-(56, 29, 'وقت الإستلام', 2),
+(56, 29, 'وقت الإستلام', 1),
 (57, 27, 'from', 2),
 (58, 27, 'من', 1),
 (59, 28, 'to', 2),
-(60, 28, 'الى', 2),
+(60, 28, 'الى', 1),
 (61, 30, 'Product', 2),
 (62, 30, 'المنتج', 1),
 (63, 31, 'your request has peen sent successfully', 2),
@@ -662,8 +705,89 @@ INSERT INTO `translation` (`id`, `key_id`, `word`, `lang`) VALUES
 (156, 80, 'كلمة المرور الحالية', 1),
 (157, 81, 'confirm password', 2),
 (158, 81, 'تأكيد كلمة المرور', 1),
-(245, 59, 'المجموع الفرعى', 1),
-(246, 59, 'sub total', 2);
+(245, 59, 'المجموع الفرعى d', 1),
+(246, 59, 'sub total d', 2),
+(328, 1, 'domicile', 11),
+(329, 2, 'empty', 11),
+(330, 3, 'empty', 11),
+(331, 4, 'empty', 11),
+(332, 5, 'empty', 11),
+(333, 6, 'empty', 11),
+(334, 6, 'empty', 11),
+(335, 7, 'empty', 11),
+(336, 8, 'empty', 11),
+(337, 9, 'empty', 11),
+(338, 10, 'empty', 11),
+(339, 11, 'empty', 11),
+(340, 12, 'empty', 11),
+(341, 13, 'empty', 11),
+(342, 14, 'empty', 11),
+(343, 15, 'empty', 11),
+(344, 16, 'empty', 11),
+(345, 17, 'empty', 11),
+(346, 18, 'empty', 11),
+(347, 19, 'empty', 11),
+(348, 20, 'empty', 11),
+(349, 21, 'empty', 11),
+(350, 22, 'empty', 11),
+(351, 23, 'empty', 11),
+(352, 24, 'empty', 11),
+(353, 25, 'empty', 11),
+(354, 26, 'empty', 11),
+(355, 27, 'empty', 11),
+(356, 28, 'empty', 11),
+(357, 29, 'empty', 11),
+(358, 30, 'empty', 11),
+(359, 31, 'empty', 11),
+(360, 33, 'empty', 11),
+(361, 34, 'empty', 11),
+(362, 35, 'empty', 11),
+(363, 36, 'empty', 11),
+(364, 37, 'empty', 11),
+(365, 38, 'empty', 11),
+(366, 39, 'empty', 11),
+(367, 40, 'empty', 11),
+(368, 41, 'empty', 11),
+(369, 42, 'empty', 11),
+(370, 43, 'empty', 11),
+(371, 44, 'empty', 11),
+(372, 45, 'empty', 11),
+(373, 46, 'empty', 11),
+(374, 47, 'empty', 11),
+(375, 48, 'empty', 11),
+(376, 49, 'empty', 11),
+(377, 50, 'empty', 11),
+(378, 51, 'empty', 11),
+(379, 52, 'empty', 11),
+(380, 53, 'empty', 11),
+(381, 54, 'empty', 11),
+(382, 55, 'empty', 11),
+(383, 56, 'empty', 11),
+(384, 57, 'empty', 11),
+(385, 58, 'empty', 11),
+(386, 59, 'empty', 11),
+(387, 60, 'empty', 11),
+(388, 61, 'empty', 11),
+(389, 62, 'empty', 11),
+(390, 63, 'empty', 11),
+(391, 64, 'empty', 11),
+(392, 65, 'empty', 11),
+(393, 66, 'empty', 11),
+(394, 67, 'empty', 11),
+(395, 68, 'empty', 11),
+(396, 69, 'empty', 11),
+(397, 70, 'empty', 11),
+(398, 71, 'empty', 11),
+(399, 73, 'empty', 11),
+(400, 74, 'empty', 11),
+(401, 75, 'empty', 11),
+(402, 76, 'empty', 11),
+(403, 77, 'empty', 11),
+(404, 78, 'empty', 11),
+(405, 79, 'empty', 11),
+(406, 80, 'empty', 11),
+(407, 81, 'empty', 11),
+(408, 81, 'empty', 11);
 
 -- --------------------------------------------------------
 
@@ -704,16 +828,17 @@ CREATE TABLE `users` (
   `permission` varchar(10) NOT NULL DEFAULT 'user',
   `phone_number` varchar(60) NOT NULL,
   `img` varchar(60) DEFAULT NULL,
-  `approve` tinyint(4) NOT NULL DEFAULT 0
+  `approve` tinyint(4) NOT NULL DEFAULT 0,
+  `ads_points` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- إرجاع أو استيراد بيانات الجدول `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `permission`, `phone_number`, `img`, `approve`) VALUES
-(1, 'محمد الشافعى', 'm@gmail.com', '4297f44b13955235245b2497399d7a93', 'admin', '01090250088', '913489.jpg', 1),
-(31, 'ahmed samier', 'ahmedSamer@gmail.com', '579f4d1dbd04a9b1d06c3e0a83a2656e', 'user', '010232134', NULL, 0);
+INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `permission`, `phone_number`, `img`, `approve`, `ads_points`) VALUES
+(1, 'محمد الشافعى', 'm@gmail.com', '4297f44b13955235245b2497399d7a93', 'admin', '01090250088', '913489.jpg', 1, 0),
+(31, 'ahmed samier', 'ahmedSamer@gmail.com', '579f4d1dbd04a9b1d06c3e0a83a2656e', 'user', '010232134', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -750,7 +875,8 @@ CREATE TABLE `wanted` (
 --
 
 INSERT INTO `wanted` (`id`, `name`) VALUES
-(8, 'ابحث عن فلفل أحمر');
+(8, 'ابحث عن فلفل أحمر'),
+(9, 'طماطم ');
 
 --
 -- Indexes for dumped tables
@@ -801,6 +927,12 @@ ALTER TABLE `contact_us`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `features_groups`
+--
+ALTER TABLE `features_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `language`
 --
 ALTER TABLE `language`
@@ -831,7 +963,16 @@ ALTER TABLE `order_items`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category` (`category`),
-  ADD KEY `subcategory` (`subcategory`);
+  ADD KEY `subcategory` (`subcategory`),
+  ADD KEY `lang` (`lang`),
+  ADD KEY `taken` (`taken`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_image` (`taken`);
 
 --
 -- Indexes for table `slides`
@@ -918,7 +1059,7 @@ ALTER TABLE `bottom_ads`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -930,7 +1071,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -939,10 +1080,16 @@ ALTER TABLE `contact_us`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `features_groups`
+--
+ALTER TABLE `features_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -966,7 +1113,13 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=573;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=580;
+
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `slides`
@@ -996,7 +1149,7 @@ ALTER TABLE `top_ads`
 -- AUTO_INCREMENT for table `translation`
 --
 ALTER TABLE `translation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=409;
 
 --
 -- AUTO_INCREMENT for table `unit`
@@ -1020,7 +1173,7 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT for table `wanted`
 --
 ALTER TABLE `wanted`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- قيود الجداول المحفوظة
@@ -1043,7 +1196,14 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lang` FOREIGN KEY (`lang`) REFERENCES `language` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `subcategory` FOREIGN KEY (`subcategory`) REFERENCES `subcategories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- القيود للجدول `product_images`
+--
+ALTER TABLE `product_images`
+  ADD CONSTRAINT `product_image` FOREIGN KEY (`taken`) REFERENCES `products` (`taken`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- القيود للجدول `subcategories`
